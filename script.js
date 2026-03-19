@@ -1,6 +1,7 @@
 // ============================================
-// AI SECURITY SIMULATOR - ПОЛНАЯ ПРЕМИУМ ВЕРСИЯ
-// Диплом Воробьевой А.А., МГЛУ, 2026
+// AI SECURITY SIMULATOR
+// по методике аудита ИБ ИИ-систем
+// МГЛУ, 2026 | Воробьева А.А.
 // ============================================
 
 let gameState = {
@@ -87,18 +88,18 @@ const acts = {
         options: [
             { id: 1, text: "🔍 Отложить релиз, провести полное тестирование", isCorrect: false,
               result: "Потратили месяц на доп. тесты. Нашли 5 багов. Конкуренты выпустили продукт раньше.",
-              explain: "✗ НЕПРАВИЛЬНО!\n\nПроблема: Бизнес-риски\n\nПоследствия:\n• Потеря рыночного окна\n• Конкуренты заняли нишу\n• Инвесторы недовольны\n\nВ бизнесе важен баланс",
-              threat: null, effects: { budget: -10, security: 20, time: 30 } },
+              explain: "✗ НЕПРАВИЛЬНО, НО НЕ КРИТИЧНО!\n\nПроблема: Бизнес-риски\n\nПоследствия:\n• Потеря рыночного окна\n• Конкуренты заняли нишу\n\nНО вы хотя бы нашли баги!",
+              threat: null, effects: { budget: -15, security: 15, time: 15 } }, // ИСПРАВЛЕНО: time +15 (было +30)
             
             { id: 2, text: "🚀 Выпустить сейчас, фиксить потом", isCorrect: false,
               result: "Модель в продакшне. Через день — сбой. Тестовые данные были подменены.",
               explain: "✗ НЕПРАВИЛЬНО!\n\nПроблема: Подмена тестовых данных (T3.1)\n\nПоследствия:\n• Критические ошибки у клиентов\n• Потеря доверия\n• Репутационный ущерб\n\nВ дипломе: Таблица 1.3",
-              threat: threats.t6, effects: { budget: 0, security: -50, time: 0 } },
+              threat: threats.t6, effects: { budget: -10, security: -25, time: 5 } }, // ИСПРАВЛЕНО: было -50 security
             
             { id: 3, text: "⚖️ Проверить только критичные сценарии", isCorrect: false,
               result: "Часть багов пропустили. Они вылезут позже, когда модель уже в эксплуатации.",
               explain: "✗ НЕПРАВИЛЬНО!\n\nПроблема: Скрытые уязвимости (T3.3)\n\nПоследствия:\n• Ложное чувство безопасности\n• Отложенные проблемы\n• Аварийные ситуации\n\nВ дипломе: Таблица 1.3",
-              threat: threats.t7, effects: { budget: -5, security: -15, time: 10 } },
+              threat: threats.t7, effects: { budget: -5, security: -10, time: 5 } }, // ИСПРАВЛЕНО: было -15, time 10
             
             { id: 4, text: "🔬 Нанять внешних аудиторов ($50K)", isCorrect: true,
               result: "Аудиторы нашли 10 уязвимостей, включая подмену тестовых данных. Модель доработана.",
@@ -202,121 +203,188 @@ function updateDisplay() {
     document.getElementById('securityBar').style.width = gameState.security + '%';
     document.getElementById('timeBar').style.width = gameState.time + '%';
     document.getElementById('progressFill').style.width = (gameState.act * 16.66) + '%';
-    document.getElementById('currentAct').textContent = `Акт ${gameState.act}/6`;
+    document.getElementById('currentAct').textContent = `АКТ ${gameState.act}/6`;
     if (actStats[gameState.act]) {
         document.getElementById('actName').textContent = actStats[gameState.act].name;
         document.getElementById('actStats').textContent = `Таблица ${actStats[gameState.act].table} | Уязвимость: ${actStats[gameState.act].vulnerability}%`;
     }
 }
 
-// Проверка на проигрыш
+// Проверка на проигрыш с визуальными предупреждениями
 function checkGameOver() {
+    // Визуальные предупреждения на грани
+    if (gameState.budget <= 15 && gameState.budget > 0) {
+        showWarning('💰 Бюджет на исходе!');
+    }
+    if (gameState.security <= 15 && gameState.security > 0) {
+        showWarning('🔒 Безопасность критически низкая!');
+    }
+    if (gameState.time >= 85 && gameState.time < 100) {
+        showWarning('⏱️ Время на исходе!');
+    }
+    
+    // Фактический проигрыш
     if (gameState.budget <= 0) { showGameOver('💰 Бюджет исчерпан. Стартап обанкротился.'); return true; }
     if (gameState.security <= 0) { showGameOver('🔒 Критическая утечка данных. Компания закрыта.'); return true; }
     if (gameState.time >= 100) { showGameOver('⏱️ Время вышло. Конкуренты заняли рынок.'); return true; }
     return false;
 }
 
+function showWarning(msg) {
+    let warningDiv = document.createElement('div');
+    warningDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #ff9f1c, #ff6b1c);
+        color: #1a1a26;
+        padding: 15px 25px;
+        border-radius: 15px;
+        font-weight: bold;
+        z-index: 10000;
+        animation: slideIn 0.5s, pulse 1s infinite;
+        box-shadow: 0 0 30px #ff9f1c;
+        border: 2px solid #ffff3b;
+        font-size: 18px;
+    `;
+    warningDiv.innerHTML = `⚠️ ${msg}`;
+    document.body.appendChild(warningDiv);
+    setTimeout(() => warningDiv.remove(), 3000);
+}
+
 function showGameOver(msg) {
     gameState.gameOver = true;
+    
+    // Эффект "сбоя" перед провалом
+    document.body.style.animation = 'shake 0.5s';
+    setTimeout(() => {
+        document.body.style.animation = '';
+    }, 500);
+    
     document.getElementById('terminalContent').innerHTML = `
-        <div style="text-align:center; padding:20px;">
-            <div style="border:2px solid #ff3b3b; color:#ff3b3b; font-size:24px; padding:20px; border-radius:20px;">❌ ПРОЕКТ ПРОВАЛЕН</div>
-            <p style="margin:20px 0;">${msg}</p>
-            <p>Правильных ответов: ${gameState.correctChoices}/6</p>
-            <button onclick="restartGame()" style="background:#1a1a26; border:2px solid #00f3ff; color:#00f3ff; padding:15px 30px; border-radius:10px;">🔄 Начать заново</button>
+        <div style="text-align:center; padding:20px; animation: glitch 1s infinite;">
+            <div style="border:3px solid #ff3b3b; color:#ff3b3b; font-size:32px; padding:30px; border-radius:30px; background:rgba(255,59,59,0.1); box-shadow:0 0 50px #ff3b3b;">
+                ❌ ПРОЕКТ ПРОВАЛЕН
+            </div>
+            <p style="margin:30px 0; font-size:20px; color:#ff9f1c;">${msg}</p>
+            <p style="margin:20px 0; font-size:18px;">Правильных ответов: ${gameState.correctChoices}/6</p>
+            <button onclick="restartGame()" style="background:linear-gradient(135deg,#1a1a26,#2a2a3a); border:3px solid #00f3ff; color:#00f3ff; padding:20px 40px; border-radius:15px; margin:20px 0; font-size:20px; cursor:pointer; box-shadow:0 0 30px #00f3ff;">🔄 НАЧАТЬ ЗАНОВО</button>
         </div>
     `;
     document.getElementById('choicesGrid').style.display = 'none';
 }
 
-// Дождь из денег
+// Дождь из денег (усиленная версия)
 function moneyRain() {
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 100; i++) {
         setTimeout(() => {
-            let emoji = ['💰','💵','💶','💷','💎','🪙','💸'][Math.floor(Math.random()*7)];
+            let emoji = ['💰','💵','💶','💷','💎','🪙','💸','🏆','⭐','✨'][Math.floor(Math.random()*10)];
             let div = document.createElement('div');
             div.innerHTML = emoji;
             div.style.position = 'fixed';
             div.style.left = Math.random()*100 + '%';
             div.style.top = '-50px';
-            div.style.fontSize = (25 + Math.random()*35) + 'px';
-            div.style.animation = `fall ${2+Math.random()*3}s linear`;
+            div.style.fontSize = (20 + Math.random()*40) + 'px';
+            div.style.animation = `fall ${1.5+Math.random()*3}s linear`;
             div.style.zIndex = '9999';
             div.style.pointerEvents = 'none';
-            div.style.filter = 'drop-shadow(0 0 10px gold)';
+            div.style.filter = 'drop-shadow(0 0 15px gold)';
+            div.style.textShadow = '0 0 20px rgba(255,215,0,0.8)';
             document.body.appendChild(div);
             setTimeout(() => div.remove(), 5000);
-        }, i*70);
+        }, i*40);
     }
 }
 
 function showVictory() {
     moneyRain();
     
-    let style = document.createElement('style');
-    style.textContent = `
-        @keyframes fall {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-    `;
-    document.head.appendChild(style);
+    // Добавляем анимации, если их ещё нет
+    if (!document.querySelector('#victoryStyles')) {
+        let style = document.createElement('style');
+        style.id = 'victoryStyles';
+        style.textContent = `
+            @keyframes fall {
+                0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+                100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+            }
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-10px); }
+                75% { transform: translateX(10px); }
+            }
+            @keyframes glitch {
+                0% { transform: translate(0); }
+                20% { transform: translate(-2px, 2px); }
+                40% { transform: translate(-2px, -2px); }
+                60% { transform: translate(2px, 2px); }
+                80% { transform: translate(2px, -2px); }
+                100% { transform: translate(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    }
     
     let riskColor = gameState.security >= 70 ? '#00ff9d' : (gameState.security >= 40 ? '#ff9f1c' : '#ff3b3b');
     let riskText = gameState.security >= 70 ? 'Низкий' : (gameState.security >= 40 ? 'Средний' : 'Высокий');
     
     document.getElementById('terminalContent').innerHTML = `
         <div style="text-align:center; padding:10px;">
-            <div style="border:3px solid #00ff9d; color:#00ff9d; font-size:36px; padding:20px; border-radius:30px; margin:20px 0; animation:pulse 2s infinite;">🏆 ПОБЕДА! СТАРТАП NeuroGen УСПЕШНО ЗАВЕРШЕН! 🏆</div>
+            <div style="border:4px solid #00ff9d; color:#00ff9d; font-size:42px; padding:30px; border-radius:40px; margin:20px 0; animation:pulse 2s infinite; background:linear-gradient(135deg,#00ff9d10,#00f3ff10); box-shadow:0 0 70px #00ff9d;">
+                🏆 ПОБЕДА! СТАРТАП NeuroGen УСПЕШНО ЗАВЕРШЕН! 🏆
+            </div>
             
-            <div style="background:linear-gradient(135deg,#1a1a26,#2a2a3a); padding:25px; border-radius:20px; margin:20px 0; box-shadow:0 0 30px #00f3ff;">
-                <h2 style="color:#00f3ff; font-size:28px; margin-bottom:20px;">📊 ИТОГОВЫЙ ОТЧЕТ ПО АУДИТУ</h2>
+            <div style="background:linear-gradient(135deg,#1a1a26,#2a2a3a); padding:30px; border-radius:30px; margin:30px 0; box-shadow:0 0 50px #00f3ff; border:2px solid #00f3ff;">
+                <h2 style="color:#00f3ff; font-size:32px; margin-bottom:25px; text-shadow:0 0 15px #00f3ff;">📊 ИТОГОВЫЙ ОТЧЕТ ПО АУДИТУ</h2>
                 
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin:20px 0;">
-                    <div style="background:#1e1e2a; padding:20px; border-radius:15px; border:1px solid #00ff9d;">
-                        <div style="font-size:50px;">💰</div>
-                        <div style="color:#888; margin:10px 0;">Бюджет</div>
-                        <div style="font-size:32px; color:#00ff9d; font-weight:bold;">${gameState.budget}%</div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:25px 0;">
+                    <div style="background:#1e1e2a; padding:25px; border-radius:20px; border:2px solid #00ff9d;">
+                        <div style="font-size:60px;">💰</div>
+                        <div style="color:#a0a0b0; margin:15px 0;">Бюджет</div>
+                        <div style="font-size:40px; color:#00ff9d; font-weight:bold;">${gameState.budget}%</div>
                     </div>
-                    <div style="background:#1e1e2a; padding:20px; border-radius:15px; border:1px solid #00ff9d;">
-                        <div style="font-size:50px;">🔒</div>
-                        <div style="color:#888; margin:10px 0;">Безопасность</div>
-                        <div style="font-size:32px; color:#00ff9d; font-weight:bold;">${gameState.security}%</div>
+                    <div style="background:#1e1e2a; padding:25px; border-radius:20px; border:2px solid #00ff9d;">
+                        <div style="font-size:60px;">🔒</div>
+                        <div style="color:#a0a0b0; margin:15px 0;">Безопасность</div>
+                        <div style="font-size:40px; color:#00ff9d; font-weight:bold;">${gameState.security}%</div>
                     </div>
-                    <div style="background:#1e1e2a; padding:20px; border-radius:15px; border:1px solid #00ff9d;">
-                        <div style="font-size:50px;">⏱️</div>
-                        <div style="color:#888; margin:10px 0;">Время</div>
-                        <div style="font-size:32px; color:#00ff9d; font-weight:bold;">${gameState.time}%</div>
+                    <div style="background:#1e1e2a; padding:25px; border-radius:20px; border:2px solid #00ff9d;">
+                        <div style="font-size:60px;">⏱️</div>
+                        <div style="color:#a0a0b0; margin:15px 0;">Время</div>
+                        <div style="font-size:40px; color:#00ff9d; font-weight:bold;">${gameState.time}%</div>
                     </div>
-                    <div style="background:#1e1e2a; padding:20px; border-radius:15px; border:1px solid #00ff9d;">
-                        <div style="font-size:50px;">🎯</div>
-                        <div style="color:#888; margin:10px 0;">Правильно</div>
-                        <div style="font-size:32px; color:#00ff9d; font-weight:bold;">${gameState.correctChoices}/6</div>
+                    <div style="background:#1e1e2a; padding:25px; border-radius:20px; border:2px solid #00ff9d;">
+                        <div style="font-size:60px;">🎯</div>
+                        <div style="color:#a0a0b0; margin:15px 0;">Правильно</div>
+                        <div style="font-size:40px; color:#00ff9d; font-weight:bold;">${gameState.correctChoices}/6</div>
                     </div>
                 </div>
                 
-                <div style="background:#1e1e2a; padding:20px; border-radius:15px; text-align:left; margin:20px 0;">
-                    <h3 style="color:#9d4edd; font-size:22px; margin-bottom:15px;">📋 ОЦЕНКА РИСКОВ ПО ДИПЛОМУ</h3>
-                    <p style="margin:12px 0; font-size:16px;"><span style="color:#00f3ff;">Уровень риска:</span> <span style="color:${riskColor}; font-weight:bold;">${riskText}</span></p>
-                    <p style="margin:12px 0; font-size:16px;"><span style="color:#00f3ff;">Соответствие ISO 27001:</span> ✅ Сертифицировано</p>
-                    <p style="margin:12px 0; font-size:16px;"><span style="color:#00f3ff;">Соответствие NIST AI RMF:</span> ✅ Выполнено</p>
-                    <p style="margin:12px 0; font-size:16px;"><span style="color:#00f3ff;">Угроз из диплома:</span> ⚠️ 27 идентифицировано</p>
-                    <p style="margin:12px 0; font-size:16px;"><span style="color:#00f3ff;">Рекомендации:</span> 📌 Приложение Л</p>
+                <div style="background:#1e1e2a; padding:25px; border-radius:20px; text-align:left; margin:25px 0; border:2px solid #9d4edd;">
+                    <h3 style="color:#9d4edd; font-size:26px; margin-bottom:20px; text-shadow:0 0 10px #9d4edd;">📋 ОЦЕНКА РИСКОВ ПО ДИПЛОМУ</h3>
+                    <p style="margin:15px 0; font-size:18px;"><span style="color:#00f3ff;">Уровень риска:</span> <span style="color:${riskColor}; font-weight:bold; font-size:22px;">${riskText}</span></p>
+                    <p style="margin:15px 0; font-size:18px;"><span style="color:#00f3ff;">Соответствие ISO 27001:</span> ✅ Сертифицировано</p>
+                    <p style="margin:15px 0; font-size:18px;"><span style="color:#00f3ff;">Соответствие NIST AI RMF:</span> ✅ Выполнено</p>
+                    <p style="margin:15px 0; font-size:18px;"><span style="color:#00f3ff;">Угроз из диплома:</span> ⚠️ 27 идентифицировано</p>
+                    <p style="margin:15px 0; font-size:18px;"><span style="color:#00f3ff;">Рекомендации:</span> 📌 Приложение Л</p>
                 </div>
                 
-                <div style="background:#1e1e2a; padding:15px; border-radius:15px;">
-                    <p style="color:#00f3ff;">🎓 Дипломная работа Воробьевой А.А., МГЛУ, 2026</p>
-                    <p style="color:#888;">Тема: Разработка методики аудита ИБ систем с ИИ</p>
+                <div style="background:#1e1e2a; padding:20px; border-radius:15px; margin-top:25px;">
+                    <p style="color:#00f3ff; font-size:22px;">🎓 Дипломная работа Воробьевой А.А., МГЛУ, 2026</p>
+                    <p style="color:#a0a0b0; font-size:18px;">Тема: Разработка методики аудита ИБ систем с ИИ</p>
                 </div>
             </div>
             
-            <button onclick="restartGame()" style="background:linear-gradient(135deg,#1a1a26,#2a2a3a); border:3px solid #00ff9d; color:#00ff9d; padding:20px 40px; border-radius:15px; margin:30px 0; font-size:20px; cursor:pointer; box-shadow:0 0 20px #00ff9d;">🏆 ПРОЙТИ ЗАНОВО 🏆</button>
+            <button onclick="restartGame()" style="background:linear-gradient(135deg,#1a1a26,#2a2a3a); border:4px solid #00ff9d; color:#00ff9d; padding:25px 50px; border-radius:20px; margin:40px 0; font-size:24px; cursor:pointer; box-shadow:0 0 40px #00ff9d; transition:0.3s;">🏆 ПРОЙТИ ЗАНОВО 🏆</button>
         </div>
     `;
     document.getElementById('choicesGrid').style.display = 'none';
@@ -399,7 +467,7 @@ function makeChoice(num) {
                 </ul>
             </div>
         </div>
-        <button onclick="nextAct()" style="width:100%; background:#1a1a26; border:3px solid #00f3ff; color:#00f3ff; padding:15px; border-radius:10px; margin-top:20px; font-size:18px; cursor:pointer;">➡️ ПРОДОЛЖИТЬ (АКТ ${gameState.act+1})</button>
+        <button onclick="nextAct()" style="width:100%; background:linear-gradient(135deg,#1a1a26,#2a2a3a); border:3px solid #00f3ff; color:#00f3ff; padding:15px; border-radius:10px; margin-top:20px; font-size:18px; cursor:pointer; transition:0.3s;">➡️ ПРОДОЛЖИТЬ (АКТ ${gameState.act+1})</button>
     </div>`;
     
     document.getElementById('terminalContent').innerHTML = html;
