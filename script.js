@@ -1,5 +1,5 @@
 // ============================================
-// AI SECURITY SIMULATOR - ПОЛНАЯ ПРЕМИУМ ВЕРСИЯ
+// AI SECURITY SIMULATOR - ИСПРАВЛЕННАЯ ВЕРСИЯ
 // Диплом Воробьевой А.А., МГЛУ, 2026
 // ============================================
 
@@ -222,7 +222,7 @@ function showGameOver(msg) {
             <div style="border:2px solid #ff3b3b; color:#ff3b3b; font-size:24px; padding:20px; border-radius:20px;">❌ ПРОЕКТ ПРОВАЛЕН</div>
             <p style="margin:20px 0;">${msg}</p>
             <p>Правильных ответов: ${gameState.correctChoices}/6</p>
-            <button onclick="restartGame()" style="background:#1a1a26; border:2px solid #00f3ff; color:#00f3ff; padding:15px 30px;">🔄 Начать заново</button>
+            <button onclick="restartGame()" style="background:#1a1a26; border:2px solid #00f3ff; color:#00f3ff; padding:15px 30px; border-radius:10px;">🔄 Начать заново</button>
         </div>
     `;
     document.getElementById('choicesGrid').style.display = 'none';
@@ -252,6 +252,9 @@ function showVictory() {
     let style = document.createElement('style');
     style.textContent = '@keyframes fall{0%{transform:translateY(0) rotate(0deg); opacity:0.8;}100%{transform:translateY(100vh) rotate(360deg); opacity:0;}}';
     document.head.appendChild(style);
+    
+    let riskColor = gameState.security >= 70 ? '#00ff9d' : (gameState.security >= 40 ? '#ff9f1c' : '#ff3b3b');
+    let riskText = gameState.security >= 70 ? 'Низкий' : (gameState.security >= 40 ? 'Средний' : 'Высокий');
     
     document.getElementById('terminalContent').innerHTML = `
         <div style="text-align:center; padding:10px;">
@@ -285,37 +288,40 @@ function showVictory() {
                 
                 <div style="background:#1e1e2a; padding:15px; border-radius:15px; text-align:left;">
                     <h3 style="color:#9d4edd;">📋 ОТЧЕТ ПО АУДИТУ</h3>
-                    <p><span style="color:#00f3ff;">Уровень риска:</span> <span style="color:${gameState.security>=70?'#00ff9d':(gameState.security>=40?'#ff9f1c':'#ff3b3b')};">${gameState.security>=70?'Низкий':(gameState.security>=40?'Средний':'Высокий')}</span></p>
+                    <p><span style="color:#00f3ff;">Уровень риска:</span> <span style="color:${riskColor};">${riskText}</span></p>
                     <p><span style="color:#00f3ff;">ISO 27001:</span> ✅ Соответствует</p>
                     <p><span style="color:#00f3ff;">NIST AI RMF:</span> ✅ Соответствует</p>
                     <p><span style="color:#00f3ff;">Угроз из диплома:</span> 27 идентифицировано</p>
+                    <p><span style="color:#00f3ff;">Рекомендации:</span> Приложение Л</p>
                 </div>
             </div>
             
             <p style="color:#888;">Воробьева А.А., МГЛУ, 2026</p>
-            <button onclick="restartGame()" style="background:#1a1a26; border:2px solid #00ff9d; color:#00ff9d; padding:15px 30px; margin:20px;">🏆 ПРОЙТИ ЗАНОВО</button>
+            <button onclick="restartGame()" style="background:#1a1a26; border:2px solid #00ff9d; color:#00ff9d; padding:15px 30px; border-radius:10px; margin:20px;">🏆 ПРОЙТИ ЗАНОВО</button>
         </div>
     `;
     document.getElementById('choicesGrid').style.display = 'none';
 }
 
 function showAct() {
-    if (checkGameOver() || gameState.act > 6) { if(gameState.act>6) showVictory(); return; }
+    if (checkGameOver()) return;
+    if (gameState.act > 6) { showVictory(); return; }
+    
     let act = acts[gameState.act];
     let stats = actStats[gameState.act];
     
     let html = `<div style="margin-bottom:20px;">
-        <div style="display:flex; gap:10px; margin-bottom:15px;">
-            <span style="border:1px solid #9d4edd; padding:4px 12px; border-radius:20px;">Акт ${gameState.act}/6</span>
-            <span style="border:1px solid #9d4edd; padding:4px 12px; border-radius:20px;">Таблица ${stats.table}</span>
+        <div style="display:flex; gap:10px; margin-bottom:15px; flex-wrap:wrap;">
+            <span style="border:1px solid #9d4edd; color:#9d4edd; padding:4px 12px; border-radius:20px;">Акт ${gameState.act}/6</span>
+            <span style="border:1px solid #9d4edd; color:#9d4edd; padding:4px 12px; border-radius:20px;">Таблица ${stats.table}</span>
         </div>
-        <h2 style="color:#00f3ff;">${act.title}</h2>
-        <p style="margin:15px 0;">${act.desc}</p>
-        <div style="background:#1a1a26; padding:10px; border-left:3px solid #ffff3b; margin:15px 0;">
-            <span style="color:#ffff3b;">📊 Статистика диплома:</span> На этом этапе <strong>${stats.vulnerability}%</strong> уязвимостей (параграф 3.3)
+        <h2 style="color:#00f3ff; margin:15px 0;">${act.title}</h2>
+        <p style="margin:15px 0; line-height:1.7;">${act.desc}</p>
+        <div style="background:#1a1a26; padding:10px 15px; border-left:3px solid #ffff3b; margin:15px 0; border-radius:5px;">
+            <span style="color:#ffff3b;">📊 Статистика диплома:</span> На этом этапе <strong>${stats.vulnerability}%</strong> проектов имеют уязвимости (параграф 3.3)
         </div>
-        <hr style="border-color:#2a2a3a;">
-        <p style="color:#00ff9d; font-weight:600;">⚡ ВЫБЕРИТЕ РЕШЕНИЕ:</p>
+        <hr style="border-color:#2a2a3a; margin:20px 0;">
+        <p style="color:#00ff9d; font-weight:600; margin-bottom:15px;">⚡ ВЫБЕРИТЕ РЕШЕНИЕ:</p>
     </div>`;
     
     document.getElementById('terminalContent').innerHTML = html;
@@ -325,13 +331,17 @@ function showAct() {
         if (act.options[i]) {
             btn.textContent = act.options[i].text;
             btn.style.display = 'block';
-        } else btn.style.display = 'none';
+            btn.style.marginBottom = '10px';
+        } else {
+            btn.style.display = 'none';
+        }
     }
     document.getElementById('choicesGrid').style.display = 'grid';
 }
 
 function makeChoice(num) {
     if (gameState.gameOver || gameState.act > 6) return;
+    
     let act = acts[gameState.act];
     let ch = act.options[num-1];
     if (!ch) return;
@@ -347,29 +357,29 @@ function makeChoice(num) {
     
     let threatHtml = '';
     if (ch.threat) {
-        threatHtml = `<div style="background:#1a1a26; padding:15px; border-left:3px solid #ff3b3b; margin:15px 0;">
-            <span style="color:#ff3b3b;">⚠️ УГРОЗА: ${ch.threat.name}</span>
-            <p style="margin:5px 0 0 0; color:#888;">${ch.threat.desc}</p>
+        threatHtml = `<div style="background:#1a1a26; padding:15px; border-left:3px solid #ff3b3b; margin:15px 0; border-radius:5px;">
+            <span style="color:#ff3b3b; font-weight:600;">⚠️ УГРОЗА: ${ch.threat.name}</span>
+            <p style="margin:8px 0 0 0; color:#a0a0b0;">${ch.threat.desc}</p>
             <p style="margin:5px 0 0 0; color:#888;">${ch.threat.table} | Риск: ${ch.threat.risk}</p>
         </div>`;
     }
     
     let html = `<div>
-        <div style="border-left:5px solid ${ch.isCorrect?'#00ff9d':'#ff3b3b'}; padding:20px; background:#1a1a26;">
-            <h3 style="color:${ch.isCorrect?'#00ff9d':'#ff3b3b'};">${ch.isCorrect?'✓ ПРАВИЛЬНО':'✗ ОШИБКА'}</h3>
-            <p style="margin:15px 0;">${ch.result}</p>
+        <div style="border-left:5px solid ${ch.isCorrect?'#00ff9d':'#ff3b3b'}; padding:20px; background:#1a1a26; border-radius:10px;">
+            <h3 style="color:${ch.isCorrect?'#00ff9d':'#ff3b3b'}; margin-bottom:15px;">${ch.isCorrect?'✓ ПРАВИЛЬНО':'✗ ОШИБКА'}</h3>
+            <p style="margin:15px 0; line-height:1.7;">${ch.result}</p>
             ${threatHtml}
-            <div style="background:#1e1e2a; padding:15px; border-radius:10px; margin:15px 0; white-space:pre-line;">${ch.explain}</div>
+            <div style="background:#1e1e2a; padding:15px; border-radius:10px; margin:15px 0; white-space:pre-line; line-height:1.7;">${ch.explain}</div>
             <div style="background:#1e1e2a; padding:15px; border-radius:10px;">
-                <p style="color:#00f3ff;">📊 ИЗМЕНЕНИЕ РЕСУРСОВ:</p>
+                <p style="color:#00f3ff; margin-bottom:10px;">📊 ИЗМЕНЕНИЕ РЕСУРСОВ:</p>
                 <ul style="list-style:none; padding:0;">
-                    <li>💰 Бюджет: ${ch.effects.budget>0?'+':''}${ch.effects.budget}%</li>
-                    <li>🔒 Безопасность: ${ch.effects.security>0?'+':''}${ch.effects.security}%</li>
-                    <li>⏱️ Время: ${ch.effects.time>0?'+':''}${ch.effects.time}%</li>
+                    <li style="margin:5px 0;">💰 Бюджет: ${ch.effects.budget>0?'+':''}${ch.effects.budget}%</li>
+                    <li style="margin:5px 0;">🔒 Безопасность: ${ch.effects.security>0?'+':''}${ch.effects.security}%</li>
+                    <li style="margin:5px 0;">⏱️ Время: ${ch.effects.time>0?'+':''}${ch.effects.time}%</li>
                 </ul>
             </div>
         </div>
-        <button onclick="nextAct()" style="width:100%; background:#1a1a26; border:2px solid #00f3ff; color:#00f3ff; padding:15px; margin-top:20px;">➡️ К АКТУ ${gameState.act+1}</button>
+        <button onclick="nextAct()" style="width:100%; background:#1a1a26; border:2px solid #00f3ff; color:#00f3ff; padding:15px; border-radius:10px; margin-top:20px; font-size:16px; cursor:pointer;">➡️ К АКТУ ${gameState.act+1}</button>
     </div>`;
     
     document.getElementById('terminalContent').innerHTML = html;
@@ -378,12 +388,22 @@ function makeChoice(num) {
 
 function nextAct() {
     gameState.act++;
-    if (gameState.act <= 6) showAct();
-    else showVictory();
+    if (gameState.act <= 6) {
+        showAct();
+    } else {
+        showVictory();
+    }
 }
 
 function restartGame() {
-    gameState = { act:1, budget:65, security:35, time:75, correctChoices:0, gameOver:false };
+    gameState = {
+        act: 1,
+        budget: 65,
+        security: 35,
+        time: 75,
+        correctChoices: 0,
+        gameOver: false
+    };
     updateDisplay();
     showAct();
     closeModal();
@@ -392,19 +412,28 @@ function restartGame() {
 function showDiplomaLinks() {
     document.getElementById('modalTitle').textContent = 'О ДИПЛОМЕ';
     document.getElementById('modalBody').innerHTML = `
-        <h3 style="color:#00f3ff;">Воробьева Александра А.</h3>
-        <p>МГЛУ, Институт информационных наук</p>
-        <p>Кафедра международной информационной безопасности</p>
-        <p>Тема: Аудит безопасности ИИ-систем</p>
-        <p>Таблицы 1.1-1.6, параграф 3.3</p>
+        <h3 style="color:#00f3ff; margin-bottom:15px;">Воробьева Александра А.</h3>
+        <p style="margin:10px 0;">МГЛУ, Институт информационных наук</p>
+        <p style="margin:10px 0;">Кафедра международной информационной безопасности</p>
+        <p style="margin:10px 0;">Тема: Аудит безопасности ИИ-систем</p>
+        <p style="margin:10px 0;">Таблицы 1.1-1.6, параграф 3.3</p>
+        <p style="margin:10px 0;">Глава 3: Апробация на DeepSeek</p>
     `;
     document.getElementById('infoModal').style.display = 'flex';
 }
 
 function showAllThreats() {
-    let html = '<h3 style="color:#00f3ff;">ВСЕ 27 УГРОЗ</h3>';
-    let stages = ['T1.1-T1.4','T2.1-T2.4','T3.1-T3.3','T4.1-T4.3','T5.1-T5.6','T6.1-T6.3'];
-    stages.forEach(s => html += `<p>• Таблица ${s}</p>`);
+    let html = '<h3 style="color:#00f3ff; margin-bottom:20px;">ВСЕ 27 УГРОЗ ИЗ ДИПЛОМА</h3>';
+    html += '<div style="background:#1a1a26; padding:15px; border-radius:10px;">';
+    html += '<p style="margin:8px 0;"><span style="color:#00ff9d;">Таблица 1.1:</span> T1.1-T1.4 (4 угрозы)</p>';
+    html += '<p style="margin:8px 0;"><span style="color:#00ff9d;">Таблица 1.2:</span> T2.1-T2.4 (4 угрозы)</p>';
+    html += '<p style="margin:8px 0;"><span style="color:#00ff9d;">Таблица 1.3:</span> T3.1-T3.3 (3 угрозы)</p>';
+    html += '<p style="margin:8px 0;"><span style="color:#00ff9d;">Таблица 1.4:</span> T4.1-T4.3 (3 угрозы)</p>';
+    html += '<p style="margin:8px 0;"><span style="color:#00ff9d;">Таблица 1.5:</span> T5.1-T5.6 (6 угроз)</p>';
+    html += '<p style="margin:8px 0;"><span style="color:#00ff9d;">Таблица 1.6:</span> T6.1-T6.3 (3 угрозы)</p>';
+    html += '<p style="margin:15px 0 0 0; color:#9d4edd;">Всего: 27 угроз</p>';
+    html += '</div>';
+    
     document.getElementById('modalTitle').textContent = 'УГРОЗЫ';
     document.getElementById('modalBody').innerHTML = html;
     document.getElementById('infoModal').style.display = 'flex';
@@ -417,6 +446,19 @@ function closeModal() {
 window.onload = function() {
     showAct();
     window.onclick = function(e) {
-        if (e.target == document.getElementById('infoModal')) closeModal();
+        if (e.target == document.getElementById('infoModal')) {
+            closeModal();
+        }
     };
 };
+
+// Добавляем стиль для пульсации
+let style = document.createElement('style');
+style.textContent = `
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+`;
+document.head.appendChild(style);
