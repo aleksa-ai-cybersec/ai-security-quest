@@ -4,16 +4,22 @@
 // МГЛУ, 2026 | Воробьева А.А.
 // ============================================
 
-// ===== ПЕРЕВОДЫ =====
+// ===== ПЕРЕВОДЫ (ПОЛНЫЕ) =====
 const translations = {
     ru: {
         authorName: "Воробьева Александра Александровна",
+        act: "АКТ",
+        table: "ТАБЛИЦА",
+        vulnerability: "УЯЗВИМОСТЬ",
+        budget: "БЮДЖЕТ",
+        security: "БЕЗОПАСНОСТЬ",
+        time: "ВРЕМЯ",
+        restart: "Начать заново",
+        diplomaLink: "Связь с дипломом",
+        allThreats: "Все 27 угроз",
         gameOver: "❌ ПРОЕКТ ПРОВАЛЕН",
         victory: "🏆 ПОБЕДА! NeuroGen УСПЕШНО ЗАВЕРШЕН! 🏆",
         finalReport: "📊 ИТОГОВЫЙ ОТЧЕТ ПО АУДИТУ",
-        budget: "Бюджет",
-        security: "Безопасность",
-        time: "Время",
         accuracy: "Точность",
         riskAssessment: "📋 ОЦЕНКА РИСКОВ ПО ДИПЛОМУ",
         riskLevel: "Уровень риска",
@@ -23,9 +29,6 @@ const translations = {
         diplomaRef: "🎓 Дипломная работа Воробьевой А.А., МГЛУ, 2026",
         diplomaTopic: "Тема: Разработка методики аудита ИБ систем с ИИ",
         playAgain: "🏆 ПРОЙТИ ЗАНОВО 🏆",
-        restart: "🔄 Начать заново",
-        diplomaLink: "📚 Связь с дипломом",
-        allThreats: "⚠️ Все 27 угроз",
         close: "Закрыть",
         aboutTitle: "О ДИПЛОМНОЙ РАБОТЕ",
         threatsTitle: "ВСЕ УГРОЗЫ",
@@ -36,16 +39,33 @@ const translations = {
         warningError: "✗ Ошибка! Анализируйте последствия.",
         low: "Низкий",
         medium: "Средний",
-        high: "Высокий"
+        high: "Высокий",
+        threat: "УГРОЗА",
+        methodology: "ПОЯСНЕНИЕ ПО МЕТОДИКЕ",
+        resourceChanges: "ИЗМЕНЕНИЕ РЕСУРСОВ",
+        correctChoice: "✓ ПРАВИЛЬНЫЙ ВЫБОР",
+        wrongChoice: "✗ ОШИБКА",
+        stage: "Этап",
+        accordingTo: "По данным параграфа 3.3,",
+        projectsHave: "проектов имеют уязвимости на этом этапе",
+        diplomaReference: "СВЯЗЬ С ДИПЛОМОМ",
+        chooseSolution: "ВЫБЕРИТЕ РЕШЕНИЕ",
+        currentStage: "Текущий этап"
     },
     en: {
         authorName: "VOROBEVA ALEKSANDRA",
+        act: "ACT",
+        table: "TABLE",
+        vulnerability: "VULNERABILITY",
+        budget: "BUDGET",
+        security: "SECURITY",
+        time: "TIME",
+        restart: "Restart",
+        diplomaLink: "About Diploma",
+        allThreats: "All 27 Threats",
         gameOver: "❌ PROJECT FAILED",
         victory: "🏆 VICTORY! NeuroGen SUCCESSFULLY COMPLETED! 🏆",
         finalReport: "📊 FINAL AUDIT REPORT",
-        budget: "Budget",
-        security: "Security",
-        time: "Time",
         accuracy: "Accuracy",
         riskAssessment: "📋 RISK ASSESSMENT (Diploma)",
         riskLevel: "Risk Level",
@@ -55,9 +75,6 @@ const translations = {
         diplomaRef: "🎓 Diploma: VOROBEVA ALEKSANDRA, MSLU, 2026",
         diplomaTopic: "Topic: AI Security Audit Methodology Development",
         playAgain: "🏆 PLAY AGAIN 🏆",
-        restart: "🔄 Restart",
-        diplomaLink: "📚 About Diploma",
-        allThreats: "⚠️ All 27 Threats",
         close: "Close",
         aboutTitle: "ABOUT THE DIPLOMA",
         threatsTitle: "ALL THREATS",
@@ -68,16 +85,33 @@ const translations = {
         warningError: "✗ Error! Analyze the consequences.",
         low: "Low",
         medium: "Medium",
-        high: "High"
+        high: "High",
+        threat: "THREAT",
+        methodology: "METHODOLOGY EXPLANATION",
+        resourceChanges: "RESOURCE CHANGES",
+        correctChoice: "✓ CORRECT CHOICE",
+        wrongChoice: "✗ WRONG CHOICE",
+        stage: "Stage",
+        accordingTo: "According to section 3.3,",
+        projectsHave: "of projects have vulnerabilities at this stage",
+        diplomaReference: "DIPLOMA REFERENCE",
+        chooseSolution: "CHOOSE SOLUTION",
+        currentStage: "Current stage"
     },
     zh: {
         authorName: "VOROBEVA ALEKSANDRA",
-        gameOver: "❌ 项目失败",
-        victory: "🏆 胜利！NeuroGen 成功完成！🏆",
-        finalReport: "📊 最终审计报告",
+        act: "阶段",
+        table: "表",
+        vulnerability: "漏洞率",
         budget: "预算",
         security: "安全",
         time: "时间",
+        restart: "重新开始",
+        diplomaLink: "关于论文",
+        allThreats: "全部27种威胁",
+        gameOver: "❌ 项目失败",
+        victory: "🏆 胜利！NeuroGen 成功完成！🏆",
+        finalReport: "📊 最终审计报告",
         accuracy: "准确率",
         riskAssessment: "📋 风险评估（论文）",
         riskLevel: "风险等级",
@@ -87,9 +121,6 @@ const translations = {
         diplomaRef: "🎓 毕业论文：VOROBEVA ALEKSANDRA，莫斯科国立语言大学，2026",
         diplomaTopic: "主题：人工智能系统信息安全审计方法开发",
         playAgain: "🏆 再玩一次 🏆",
-        restart: "🔄 重新开始",
-        diplomaLink: "📚 关于论文",
-        allThreats: "⚠️ 全部27种威胁",
         close: "关闭",
         aboutTitle: "关于毕业论文",
         threatsTitle: "全部威胁",
@@ -100,7 +131,18 @@ const translations = {
         warningError: "✗ 错误！分析后果。",
         low: "低",
         medium: "中",
-        high: "高"
+        high: "高",
+        threat: "威胁",
+        methodology: "方法说明",
+        resourceChanges: "资源变化",
+        correctChoice: "✓ 正确选择",
+        wrongChoice: "✗ 错误选择",
+        stage: "阶段",
+        accordingTo: "根据第3.3节，",
+        projectsHave: "的项目在此阶段存在漏洞",
+        diplomaReference: "论文参考",
+        chooseSolution: "选择解决方案",
+        currentStage: "当前阶段"
     }
 };
 
@@ -116,30 +158,37 @@ let gameState = {
     totalChoices: 0,
     gameOver: false,
     victory: false,
-    history: []
+    history: [],
+    gameOverMsg: ""
 };
 
 // ===== ВСЕ УГРОЗЫ ИЗ ДИПЛОМА =====
 const threats = {
-    t1: { id: "T1.1", nameRu: "Отравление данных", nameEn: "Data Poisoning", nameZh: "数据投毒", table: "1.1", risk: "Критический" },
-    t2: { id: "T1.4", nameRu: "Нарушение конфиденциальности", nameEn: "Privacy Violation", nameZh: "隐私侵犯", table: "1.1", risk: "Высокий" },
-    t3: { id: "T1.3", nameRu: "Ошибки разметки", nameEn: "Labeling Errors", nameZh: "标注错误", table: "1.1", risk: "Средний" },
-    t4: { id: "T2.1", nameRu: "Кража модели", nameEn: "Model Theft", nameZh: "模型盗窃", table: "1.2", risk: "Критический" },
-    t5: { id: "T2.3", nameRu: "Компрометация кода", nameEn: "Code Compromise", nameZh: "代码入侵", table: "1.2", risk: "Критический" },
-    t6: { id: "T3.1", nameRu: "Подмена тестовых данных", nameEn: "Test Data Replacement", nameZh: "测试数据替换", table: "1.3", risk: "Высокий" },
-    t7: { id: "T3.3", nameRu: "Скрытые уязвимости", nameEn: "Hidden Vulnerabilities", nameZh: "隐藏漏洞", table: "1.3", risk: "Высокий" },
-    t8: { id: "T4.1", nameRu: "Подмена модели", nameEn: "Model Replacement", nameZh: "模型替换", table: "1.4", risk: "Критический" },
-    t9: { id: "T4.2", nameRu: "Небезопасный API", nameEn: "Insecure API", nameZh: "不安全API", table: "1.4", risk: "Высокий" },
-    t10: { id: "T5.1", nameRu: "Состязательные атаки", nameEn: "Adversarial Attacks", nameZh: "对抗攻击", table: "1.5", risk: "Высокий" },
-    t11: { id: "T5.2", nameRu: "Промпт-инъекции", nameEn: "Prompt Injections", nameZh: "提示注入", table: "1.5", risk: "Критический" },
-    t12: { id: "T6.1", nameRu: "Откат к уязвимой версии", nameEn: "Rollback to Vulnerable Version", nameZh: "回滚到有漏洞版本", table: "1.6", risk: "Высокий" },
-    t13: { id: "T6.2", nameRu: "Компрометация пайплайна", nameEn: "Pipeline Compromise", nameZh: "ML流水线安全漏洞", table: "1.6", risk: "Критический" }
+    t1: { id: "T1.1", nameRu: "Отравление данных", nameEn: "Data Poisoning", nameZh: "数据投毒", descRu: "Внесение искаженных данных в обучающую выборку", descEn: "Insertion of distorted data into the training set", descZh: "向训练集中插入扭曲数据", table: "1.1", risk: "Критический" },
+    t2: { id: "T1.4", nameRu: "Нарушение конфиденциальности", nameEn: "Privacy Violation", nameZh: "隐私侵犯", descRu: "Сбор данных без согласия субъектов", descEn: "Data collection without consent", descZh: "未经同意收集数据", table: "1.1", risk: "Высокий" },
+    t3: { id: "T1.3", nameRu: "Ошибки разметки", nameEn: "Labeling Errors", nameZh: "标注错误", descRu: "Некачественная разметка данных", descEn: "Poor quality data labeling", descZh: "低质量数据标注", table: "1.1", risk: "Средний" },
+    t4: { id: "T2.1", nameRu: "Кража модели", nameEn: "Model Theft", nameZh: "模型盗窃", descRu: "Извлечение модели через API", descEn: "Model extraction via API", descZh: "通过API提取模型", table: "1.2", risk: "Критический" },
+    t5: { id: "T2.3", nameRu: "Компрометация кода", nameEn: "Code Compromise", nameZh: "代码入侵", descRu: "Взлом серверов и внедрение бэкдоров", descEn: "Server hacking and backdoor injection", descZh: "服务器黑客攻击和后门注入", table: "1.2", risk: "Критический" },
+    t6: { id: "T3.1", nameRu: "Подмена тестовых данных", nameEn: "Test Data Replacement", nameZh: "测试数据替换", descRu: "Манипуляция с тестовой выборкой", descEn: "Test set manipulation", descZh: "测试集操纵", table: "1.3", risk: "Высокий" },
+    t7: { id: "T3.3", nameRu: "Скрытые уязвимости", nameEn: "Hidden Vulnerabilities", nameZh: "隐藏漏洞", descRu: "Непроверенные сценарии работы модели", descEn: "Untested model scenarios", descZh: "未测试的模型场景", table: "1.3", risk: "Высокий" },
+    t8: { id: "T4.1", nameRu: "Подмена модели", nameEn: "Model Replacement", nameZh: "模型替换", descRu: "Замена легитимной модели на вредоносную", descEn: "Replacing legitimate model with malicious one", descZh: "用恶意模型替换合法模型", table: "1.4", risk: "Критический" },
+    t9: { id: "T4.2", nameRu: "Небезопасный API", nameEn: "Insecure API", nameZh: "不安全API", descRu: "Отсутствие защиты API от атак", descEn: "Lack of API protection", descZh: "缺乏API保护", table: "1.4", risk: "Высокий" },
+    t10: { id: "T5.1", nameRu: "Состязательные атаки", nameEn: "Adversarial Attacks", nameZh: "对抗攻击", descRu: "Специально сформированные входные данные", descEn: "Specially crafted input data", descZh: "特制输入数据", table: "1.5", risk: "Высокий" },
+    t11: { id: "T5.2", nameRu: "Промпт-инъекции", nameEn: "Prompt Injections", nameZh: "提示注入", descRu: "Обход инструкций модели", descEn: "Bypassing model instructions", descZh: "绕过模型指令", table: "1.5", risk: "Критический" },
+    t12: { id: "T6.1", nameRu: "Откат к уязвимой версии", nameEn: "Rollback to Vulnerable Version", nameZh: "回滚到有漏洞版本", descRu: "Возврат к старой версии с уязвимостями", descEn: "Reverting to old vulnerable version", descZh: "回滚到旧的有漏洞版本", table: "1.6", risk: "Высокий" },
+    t13: { id: "T6.2", nameRu: "Компрометация пайплайна", nameEn: "Pipeline Compromise", nameZh: "流水线入侵", descRu: "Внедрение вредоносного кода в обновление", descEn: "Malicious code injection into update", descZh: "向更新中注入恶意代码", table: "1.6", risk: "Критический" }
 };
 
 function getThreatName(threat) {
     if (currentLang === 'ru') return threat.nameRu;
     if (currentLang === 'en') return threat.nameEn;
     return threat.nameZh;
+}
+
+function getThreatDesc(threat) {
+    if (currentLang === 'ru') return threat.descRu;
+    if (currentLang === 'en') return threat.descEn;
+    return threat.descZh;
 }
 
 function getRiskText(risk) {
@@ -442,7 +491,7 @@ const acts = {
               resultZh: "恶意代码注入流水线。模型被投毒。",
               explainRu: "✗ ОШИБКА! Компрометация пайплайна (T6.2).",
               explainEn: "✗ ERROR! Pipeline compromise (T6.2).",
-              explainZh: "✗ 错误！ML流水线安全漏洞 (T6.2)。",
+              explainZh: "✗ 错误！流水线入侵 (T6.2)。",
               effects: { budget: -10, security: -25, time: +10 } },
             { id: 4, textRu: "⏸️ Отложить", textEn: "⏸️ Postpone", textZh: "⏸️ 推迟", 
               correct: false, threat: null,
@@ -495,57 +544,257 @@ function getOptionExplain(opt) {
 function setLanguage(lang) {
     currentLang = lang;
     updateDisplay();
-    
-    const footerAuthor = document.querySelector('.game-footer p:first-child');
-    if (footerAuthor) {
-        footerAuthor.innerHTML = `© 2026 ${translations[lang].authorName} | Московский государственный лингвистический университет`;
-    }
-    
-    const restartBtn = document.querySelector('.control-btn.restart span:last-child');
-    const diplomaBtn = document.querySelector('.control-btn.diploma span:last-child');
-    const threatsBtn = document.querySelector('.control-btn.threats span:last-child');
-    if (restartBtn) restartBtn.textContent = translations[lang].restart;
-    if (diplomaBtn) diplomaBtn.textContent = translations[lang].diplomaLink;
-    if (threatsBtn) threatsBtn.textContent = translations[lang].allThreats;
+    updateButtonsAndStaticTexts();
     
     if (!gameState.gameOver && !gameState.victory && gameState.act <= 6) {
         showAct();
     } else if (gameState.victory) {
         showVictory();
     } else if (gameState.gameOver) {
-        const modal = document.getElementById('infoModal');
-        if (modal && modal.style.display === 'flex') {
-            const modalTitle = document.getElementById('modalTitle');
-            if (modalTitle && (modalTitle.textContent === 'О ДИПЛОМНОЙ РАБОТЕ' || 
-                modalTitle.textContent === 'ABOUT THE DIPLOMA' ||
-                modalTitle.textContent === '关于毕业论文')) {
-                showDiplomaLinks();
-            } else if (modalTitle && (modalTitle.textContent === 'ВСЕ УГРОЗЫ' ||
-                modalTitle.textContent === 'ALL THREATS' ||
-                modalTitle.textContent === '全部威胁')) {
-                showAllThreats();
-            }
-        }
+        showGameOver(gameState.gameOverMsg);
     }
 }
 
-// ===== ФУНКЦИИ ИНТЕРФЕЙСА =====
+function updateButtonsAndStaticTexts() {
+    // Кнопки управления
+    const restartBtnSpan = document.querySelector('.control-btn.restart span:last-child');
+    const diplomaBtnSpan = document.querySelector('.control-btn.diploma span:last-child');
+    const threatsBtnSpan = document.querySelector('.control-btn.threats span:last-child');
+    if (restartBtnSpan) restartBtnSpan.textContent = translations[currentLang].restart;
+    if (diplomaBtnSpan) diplomaBtnSpan.textContent = translations[currentLang].diplomaLink;
+    if (threatsBtnSpan) threatsBtnSpan.textContent = translations[currentLang].allThreats;
+    
+    // Подвал
+    const footerFirstP = document.querySelector('.game-footer p:first-child');
+    if (footerFirstP) {
+        footerFirstP.innerHTML = `© 2026 ${translations[currentLang].authorName} | Московский государственный лингвистический университет`;
+    }
+}
+
+// ===== ОСНОВНЫЕ ФУНКЦИИ ИГРЫ =====
 function updateDisplay() {
+    // Ресурсы
     document.getElementById('budgetValue').textContent = gameState.budget + '%';
     document.getElementById('securityValue').textContent = gameState.security + '%';
     document.getElementById('timeValue').textContent = gameState.time + '%';
-    
     document.getElementById('budgetBar').style.width = gameState.budget + '%';
     document.getElementById('securityBar').style.width = gameState.security + '%';
     document.getElementById('timeBar').style.width = gameState.time + '%';
     
+    // Заголовки ресурсов
+    const budgetLabel = document.querySelector('.resource-card.budget .resource-label');
+    const securityLabel = document.querySelector('.resource-card.security .resource-label');
+    const timeLabel = document.querySelector('.resource-card.time .resource-label');
+    if (budgetLabel) budgetLabel.textContent = translations[currentLang].budget;
+    if (securityLabel) securityLabel.textContent = translations[currentLang].security;
+    if (timeLabel) timeLabel.textContent = translations[currentLang].time;
+    
+    // Прогресс
     document.getElementById('progressFill').style.width = ((gameState.act - 1) * 16.66) + '%';
-    document.getElementById('currentAct').textContent = `АКТ ${gameState.act}/6`;
+    document.getElementById('currentAct').textContent = `${translations[currentLang].act} ${gameState.act}/6`;
     
     if (actStats[gameState.act]) {
         document.getElementById('actName').textContent = getActName(gameState.act);
-        document.getElementById('actStats').innerHTML = `Таблица ${actStats[gameState.act].table} | <span style="color:${actStats[gameState.act].color};">Уязвимость: ${actStats[gameState.act].vulnerability}</span>`;
+        document.getElementById('actStats').innerHTML = `${translations[currentLang].table} ${actStats[gameState.act].table} | <span style="color:${actStats[gameState.act].color};">${translations[currentLang].vulnerability}: ${actStats[gameState.act].vulnerability}</span>`;
     }
+}
+
+function showAct() {
+    if (gameState.gameOver || gameState.victory) return;
+    if (gameState.act > 6) {
+        showVictory();
+        return;
+    }
+    
+    const act = acts[gameState.act];
+    const stats = actStats[gameState.act];
+    
+    let html = `
+        <div style="margin-bottom:20px;">
+            <div style="display:flex; gap:10px; margin-bottom:15px; flex-wrap:wrap;">
+                <span style="border:2px solid #9d4edd; color:#9d4edd; padding:5px 15px; border-radius:25px; font-weight:bold;">${translations[currentLang].act} ${gameState.act}/6</span>
+                <span style="border:2px solid #9d4edd; color:#9d4edd; padding:5px 15px; border-radius:25px; font-weight:bold;">${translations[currentLang].table} ${stats.table}</span>
+                <span style="border:2px solid ${stats.color}; color:${stats.color}; padding:5px 15px; border-radius:25px; font-weight:bold;">${translations[currentLang].vulnerability}: ${stats.vulnerability}</span>
+            </div>
+            
+            <h2 style="color:#00f3ff; font-size:26px; margin:20px 0; text-shadow:0 0 10px #00f3ff;">${getActTitle(gameState.act)}</h2>
+            
+            <div style="background:#1a1a26; padding:20px; border-radius:15px; margin:20px 0; border-left:4px solid #00f3ff;">
+                <p style="margin:0; line-height:1.8; font-size:16px;">${getActDesc(gameState.act)}</p>
+            </div>
+            
+            <div style="background:linear-gradient(135deg,#2a1a3a,#1a1a2a); padding:20px; border-radius:15px; margin:20px 0; border:2px solid #9d4edd;">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:15px;">
+                    <span style="font-size:24px;">📊</span>
+                    <span style="color:#ffff3b; font-weight:bold; font-size:18px;">${translations[currentLang].diplomaReference}:</span>
+                </div>
+                <p style="margin:5px 0; color:#a0a0b0;">${translations[currentLang].stage}: <span style="color:#00ff9d;">${getActName(gameState.act)}</span> (${translations[currentLang].table} ${stats.table})</p>
+                <p style="margin:5px 0; color:#a0a0b0;">${translations[currentLang].accordingTo} <span style="color:${stats.color};">${stats.vulnerability}</span> ${translations[currentLang].projectsHave}</p>
+            </div>
+            
+            <hr style="border-color:#2a2a3a; margin:25px 0;">
+            <p style="color:#00ff9d; font-weight:bold; font-size:18px; margin-bottom:20px;">⚡ ${translations[currentLang].chooseSolution}</p>
+        </div>
+    `;
+    
+    document.getElementById('terminalContent').innerHTML = html;
+    
+    for (let i = 0; i < 4; i++) {
+        const btn = document.getElementById(`choice${i+1}`);
+        if (act.options[i]) {
+            btn.textContent = getOptionText(act.options[i]);
+            btn.style.display = 'block';
+            btn.style.marginBottom = '12px';
+            btn.style.padding = '15px';
+        } else {
+            btn.style.display = 'none';
+        }
+    }
+    document.getElementById('choicesGrid').style.display = 'grid';
+}
+
+function makeChoice(num) {
+    if (gameState.gameOver || gameState.victory || gameState.act > 6) return;
+    
+    const act = acts[gameState.act];
+    const choice = act.options[num-1];
+    if (!choice) return;
+    
+    gameState.totalChoices++;
+    if (choice.correct) {
+        gameState.correctChoices++;
+        showWarning(translations[currentLang].warningCorrect, 'success');
+    } else {
+        showWarning(translations[currentLang].warningError, 'danger');
+    }
+    
+    gameState.budget = Math.min(100, Math.max(0, gameState.budget + (choice.effects.budget || 0)));
+    gameState.security = Math.min(100, Math.max(0, gameState.security + (choice.effects.security || 0)));
+    gameState.time = Math.min(100, Math.max(0, gameState.time + (choice.effects.time || 0)));
+    
+    gameState.history.push({
+        act: gameState.act,
+        choice: num,
+        correct: choice.correct,
+        threat: choice.threat
+    });
+    
+    updateDisplay();
+    
+    if (checkGameOver()) return;
+    
+    let threatHtml = '';
+    if (choice.threat) {
+        threatHtml = `
+            <div style="background:#2a1a1a; padding:15px; border-left:4px solid #ff3b3b; margin:15px 0; border-radius:5px;">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                    <span style="font-size:24px;">⚠️</span>
+                    <span style="color:#ff3b3b; font-weight:bold; font-size:18px;">${translations[currentLang].threat}: ${getThreatName(choice.threat)}</span>
+                </div>
+                <p style="margin:10px 0; color:#a0a0b0;">${getThreatDesc(choice.threat)}</p>
+                <p style="margin:5px 0; color:#888;">${translations[currentLang].table} ${choice.threat.table} | ${translations[currentLang].riskLevel}: ${getRiskText(choice.threat.risk)}</p>
+            </div>
+        `;
+    }
+    
+    const html = `
+        <div>
+            <div style="border-left:5px solid ${choice.correct ? '#00ff9d' : '#ff3b3b'}; padding:20px; background:#1a1a26; border-radius:10px;">
+                <h3 style="color:${choice.correct ? '#00ff9d' : '#ff3b3b'}; font-size:24px; margin-bottom:15px;">
+                    ${choice.correct ? translations[currentLang].correctChoice : translations[currentLang].wrongChoice}
+                </h3>
+                
+                <div style="background:#1e1e2a; padding:20px; border-radius:10px; margin:15px 0;">
+                    <p style="margin:0; line-height:1.7; font-size:16px;">${getOptionResult(choice)}</p>
+                </div>
+                
+                ${threatHtml}
+                
+                <div style="background:linear-gradient(135deg,#1e2a1a,#1a1a26); padding:20px; border-radius:10px; margin:15px 0; border-left:4px solid #9d4edd;">
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:15px;">
+                        <span style="font-size:24px;">📚</span>
+                        <span style="color:#9d4edd; font-weight:bold; font-size:18px;">${translations[currentLang].methodology}:</span>
+                    </div>
+                    <p style="margin:0; white-space:pre-line; line-height:1.7; font-size:15px; color:#a0a0b0;">${getOptionExplain(choice)}</p>
+                </div>
+                
+                <div style="background:#1e1e2a; padding:15px; border-radius:10px;">
+                    <p style="color:#00f3ff; font-weight:bold; margin-bottom:15px;">📊 ${translations[currentLang].resourceChanges}:</p>
+                    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;">
+                        <div style="text-align:center;">
+                            <div style="font-size:24px;">💰</div>
+                            <div style="color:${choice.effects.budget > 0 ? '#00ff9d' : (choice.effects.budget < 0 ? '#ff3b3b' : '#888')}; font-weight:bold;">
+                                ${choice.effects.budget > 0 ? '+' : ''}${choice.effects.budget}%
+                            </div>
+                        </div>
+                        <div style="text-align:center;">
+                            <div style="font-size:24px;">🔒</div>
+                            <div style="color:${choice.effects.security > 0 ? '#00ff9d' : (choice.effects.security < 0 ? '#ff3b3b' : '#888')}; font-weight:bold;">
+                                ${choice.effects.security > 0 ? '+' : ''}${choice.effects.security}%
+                            </div>
+                        </div>
+                        <div style="text-align:center;">
+                            <div style="font-size:24px;">⏱️</div>
+                            <div style="color:${choice.effects.time < 0 ? '#00ff9d' : (choice.effects.time > 0 ? '#ff3b3b' : '#888')}; font-weight:bold;">
+                                ${choice.effects.time > 0 ? '+' : ''}${choice.effects.time}%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display:flex; gap:10px; margin-top:20px;">
+                    <button onclick="continueGame()" style="flex:1; background:linear-gradient(135deg,#1a1a26,#2a2a3a); border:3px solid #00f3ff; color:#00f3ff; padding:15px; border-radius:10px; font-size:18px; cursor:pointer; transition:0.3s;">
+                        ${translations[currentLang].continue} (${translations[currentLang].act} ${gameState.act + 1})
+                    </button>
+                    <button onclick="showStats()" style="background:linear-gradient(135deg,#1a1a26,#2a2a3a); border:3px solid #9d4edd; color:#9d4edd; padding:15px 25px; border-radius:10px; font-size:18px; cursor:pointer;">
+                        📊
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.getElementById('terminalContent').innerHTML = html;
+    document.getElementById('choicesGrid').style.display = 'none';
+}
+
+function continueGame() {
+    if (gameState.gameOver || gameState.victory) return;
+    gameState.act++;
+    showAct();
+}
+
+function showStats() {
+    const accuracy = Math.round(gameState.correctChoices / gameState.totalChoices * 100) || 0;
+    const html = `
+        <div style="background:#1a1a26; padding:20px; border-radius:15px;">
+            <h3 style="color:#00f3ff; font-size:24px; margin-bottom:20px;">${translations[currentLang].stats}</h3>
+            
+            <div style="display:grid; gap:15px;">
+                <div style="background:#1e1e2a; padding:15px; border-radius:10px;">
+                    <div style="color:#888; margin-bottom:5px;">${translations[currentLang].correctAnswers}</div>
+                    <div style="font-size:32px; color:#00ff9d;">${gameState.correctChoices}/${gameState.totalChoices}</div>
+                </div>
+                
+                <div style="background:#1e1e2a; padding:15px; border-radius:10px;">
+                    <div style="color:#888; margin-bottom:5px;">${translations[currentLang].accuracy}</div>
+                    <div style="font-size:32px; color:#00f3ff;">${accuracy}%</div>
+                </div>
+                
+                <div style="background:#1e1e2a; padding:15px; border-radius:10px;">
+                    <div style="color:#888; margin-bottom:5px;">${translations[currentLang].currentStage}</div>
+                    <div style="font-size:32px; color:#9d4edd;">${gameState.act}/6</div>
+                </div>
+            </div>
+            
+            <button onclick="continueGame()" style="width:100%; background:linear-gradient(135deg,#1a1a26,#2a2a3a); border:3px solid #00f3ff; color:#00f3ff; padding:15px; border-radius:10px; margin-top:20px; font-size:18px; cursor:pointer;">
+                ⬅️ ${translations[currentLang].backToGame}
+            </button>
+        </div>
+    `;
+    
+    document.getElementById('terminalContent').innerHTML = html;
+    document.getElementById('choicesGrid').style.display = 'none';
 }
 
 function checkGameOver() {
@@ -568,43 +817,17 @@ function checkGameOver() {
     return false;
 }
 
-function showWarning(msg, type = 'warning') {
-    let colors = {
-        warning: { bg: '#ff9f1c', shadow: '#ff9f1c' },
-        danger: { bg: '#ff3b3b', shadow: '#ff3b3b' },
-        success: { bg: '#00ff9d', shadow: '#00ff9d' }
-    };
-    let color = colors[type] || colors.warning;
-    
-    let warningDiv = document.createElement('div');
-    warningDiv.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: linear-gradient(135deg, ${color.bg}, ${color.bg}dd);
-        color: #1a1a26;
-        padding: 15px 25px;
-        border-radius: 15px;
-        font-weight: bold;
-        z-index: 10000;
-        animation: slideIn 0.5s;
-        box-shadow: 0 0 30px ${color.shadow};
-        border: 2px solid #ffff3b;
-        font-size: 18px;
-    `;
-    warningDiv.innerHTML = `⚠️ ${msg}`;
-    document.body.appendChild(warningDiv);
-    setTimeout(() => warningDiv.remove(), 3000);
-}
-
 function showGameOver(msg) {
     if (gameState.gameOver) return;
     gameState.gameOver = true;
+    gameState.gameOverMsg = msg;
     
     document.body.style.animation = 'shake 0.5s';
     setTimeout(() => {
         document.body.style.animation = '';
     }, 500);
+    
+    const accuracy = Math.round(gameState.correctChoices / gameState.totalChoices * 100) || 0;
     
     document.getElementById('terminalContent').innerHTML = `
         <div style="text-align:center; padding:20px; animation: glitch 1s infinite;">
@@ -613,33 +836,11 @@ function showGameOver(msg) {
             </div>
             <p style="margin:30px 0; font-size:20px; color:#ff9f1c;">${msg}</p>
             <p style="margin:20px 0; font-size:18px;">${translations[currentLang].correctAnswers}: ${gameState.correctChoices}/${gameState.totalChoices}</p>
-            <p style="margin:10px 0; font-size:16px; color:#a0a0b0;">${translations[currentLang].accuracy}: ${Math.round(gameState.correctChoices/gameState.totalChoices*100)}%</p>
+            <p style="margin:10px 0; font-size:16px; color:#a0a0b0;">${translations[currentLang].accuracy}: ${accuracy}%</p>
             <button onclick="restartGame()" style="background:linear-gradient(135deg,#1a1a26,#2a2a3a); border:3px solid #00f3ff; color:#00f3ff; padding:20px 40px; border-radius:15px; margin:20px 0; font-size:20px; cursor:pointer; box-shadow:0 0 30px #00f3ff;">${translations[currentLang].restart}</button>
         </div>
     `;
     document.getElementById('choicesGrid').style.display = 'none';
-}
-
-function moneyRain() {
-    for (let i = 0; i < 150; i++) {
-        setTimeout(() => {
-            let emojis = ['💰','💵','💶','💷','💎','🪙','💸','🏆','⭐','✨','🎉','🎊'];
-            let emoji = emojis[Math.floor(Math.random() * emojis.length)];
-            let div = document.createElement('div');
-            div.innerHTML = emoji;
-            div.style.position = 'fixed';
-            div.style.left = Math.random() * 100 + '%';
-            div.style.top = '-50px';
-            div.style.fontSize = (20 + Math.random() * 40) + 'px';
-            div.style.animation = `fall ${1.5 + Math.random() * 3}s linear`;
-            div.style.zIndex = '9999';
-            div.style.pointerEvents = 'none';
-            div.style.filter = 'drop-shadow(0 0 15px gold)';
-            div.style.textShadow = '0 0 20px rgba(255,215,0,0.8)';
-            document.body.appendChild(div);
-            setTimeout(() => div.remove(), 5000);
-        }, i * 30);
-    }
 }
 
 function showVictory() {
@@ -648,42 +849,21 @@ function showVictory() {
     moneyRain();
     
     if (!document.querySelector('#victoryStyles')) {
-        let style = document.createElement('style');
+        const style = document.createElement('style');
         style.id = 'victoryStyles';
         style.textContent = `
-            @keyframes fall {
-                0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-                100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-            }
-            @keyframes pulse {
-                0% { transform: scale(1); }
-                50% { transform: scale(1.05); }
-                100% { transform: scale(1); }
-            }
-            @keyframes slideIn {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            @keyframes shake {
-                0%, 100% { transform: translateX(0); }
-                25% { transform: translateX(-10px); }
-                75% { transform: translateX(10px); }
-            }
-            @keyframes glitch {
-                0% { transform: translate(0); }
-                20% { transform: translate(-2px, 2px); }
-                40% { transform: translate(-2px, -2px); }
-                60% { transform: translate(2px, 2px); }
-                80% { transform: translate(2px, -2px); }
-                100% { transform: translate(0); }
-            }
+            @keyframes fall { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
+            @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+            @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+            @keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
+            @keyframes glitch { 0% { transform: translate(0); } 20% { transform: translate(-2px, 2px); } 40% { transform: translate(-2px, -2px); } 60% { transform: translate(2px, 2px); } 80% { transform: translate(2px, -2px); } 100% { transform: translate(0); } }
         `;
         document.head.appendChild(style);
     }
     
-    let accuracy = Math.round(gameState.correctChoices / gameState.totalChoices * 100);
-    let riskLevel = accuracy >= 80 ? translations[currentLang].low : (accuracy >= 50 ? translations[currentLang].medium : translations[currentLang].high);
-    let riskColor = accuracy >= 80 ? '#00ff9d' : (accuracy >= 50 ? '#ff9f1c' : '#ff3b3b');
+    const accuracy = Math.round(gameState.correctChoices / gameState.totalChoices * 100);
+    const riskLevel = accuracy >= 80 ? translations[currentLang].low : (accuracy >= 50 ? translations[currentLang].medium : translations[currentLang].high);
+    const riskColor = accuracy >= 80 ? '#00ff9d' : (accuracy >= 50 ? '#ff9f1c' : '#ff3b3b');
     
     document.getElementById('terminalContent').innerHTML = `
         <div style="text-align:center; padding:10px;">
@@ -737,202 +917,55 @@ function showVictory() {
     document.getElementById('choicesGrid').style.display = 'none';
 }
 
-function showAct() {
-    if (gameState.gameOver || gameState.victory) return;
-    if (gameState.act > 6) {
-        showVictory();
-        return;
-    }
+function showWarning(msg, type = 'warning') {
+    const colors = {
+        warning: { bg: '#ff9f1c', shadow: '#ff9f1c' },
+        danger: { bg: '#ff3b3b', shadow: '#ff3b3b' },
+        success: { bg: '#00ff9d', shadow: '#00ff9d' }
+    };
+    const color = colors[type] || colors.warning;
     
-    let act = acts[gameState.act];
-    let stats = actStats[gameState.act];
-    
-    let html = `
-        <div style="margin-bottom:20px;">
-            <div style="display:flex; gap:10px; margin-bottom:15px; flex-wrap:wrap;">
-                <span style="border:2px solid #9d4edd; color:#9d4edd; padding:5px 15px; border-radius:25px; font-weight:bold;">АКТ ${gameState.act}/6</span>
-                <span style="border:2px solid #9d4edd; color:#9d4edd; padding:5px 15px; border-radius:25px; font-weight:bold;">ТАБЛИЦА ${stats.table}</span>
-                <span style="border:2px solid ${stats.color}; color:${stats.color}; padding:5px 15px; border-radius:25px; font-weight:bold;">УЯЗВИМОСТЬ: ${stats.vulnerability}</span>
-            </div>
-            
-            <h2 style="color:#00f3ff; font-size:26px; margin:20px 0; text-shadow:0 0 10px #00f3ff;">${getActTitle(gameState.act)}</h2>
-            
-            <div style="background:#1a1a26; padding:20px; border-radius:15px; margin:20px 0; border-left:4px solid #00f3ff;">
-                <p style="margin:0; line-height:1.8; font-size:16px;">${getActDesc(gameState.act)}</p>
-            </div>
-            
-            <div style="background:linear-gradient(135deg,#2a1a3a,#1a1a2a); padding:20px; border-radius:15px; margin:20px 0; border:2px solid #9d4edd;">
-                <div style="display:flex; align-items:center; gap:10px; margin-bottom:15px;">
-                    <span style="font-size:24px;">📊</span>
-                    <span style="color:#ffff3b; font-weight:bold; font-size:18px;">${currentLang === 'ru' ? 'СВЯЗЬ С ДИПЛОМОМ:' : (currentLang === 'en' ? 'DIPLOMA REFERENCE:' : '论文参考：')}</span>
-                </div>
-                <p style="margin:5px 0; color:#a0a0b0;">${currentLang === 'ru' ? 'Этап:' : (currentLang === 'en' ? 'Stage:' : '阶段：')} <span style="color:#00ff9d;">${getActName(gameState.act)}</span> (Таблица ${stats.table})</p>
-                <p style="margin:5px 0; color:#a0a0b0;">${currentLang === 'ru' ? 'По данным параграфа 3.3,' : (currentLang === 'en' ? 'According to section 3.3,' : '根据第3.3节，')} <span style="color:${stats.color};">${stats.vulnerability}</span> ${currentLang === 'ru' ? 'проектов имеют уязвимости на этом этапе' : (currentLang === 'en' ? 'of projects have vulnerabilities at this stage' : '的项目在此阶段存在漏洞')}</p>
-            </div>
-            
-            <hr style="border-color:#2a2a3a; margin:25px 0;">
-            <p style="color:#00ff9d; font-weight:bold; font-size:18px; margin-bottom:20px;">⚡ ${currentLang === 'ru' ? 'ВЫБЕРИТЕ РЕШЕНИЕ:' : (currentLang === 'en' ? 'CHOOSE SOLUTION:' : '选择解决方案：')}</p>
-        </div>
+    const warningDiv = document.createElement('div');
+    warningDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, ${color.bg}, ${color.bg}dd);
+        color: #1a1a26;
+        padding: 15px 25px;
+        border-radius: 15px;
+        font-weight: bold;
+        z-index: 10000;
+        animation: slideIn 0.5s;
+        box-shadow: 0 0 30px ${color.shadow};
+        border: 2px solid #ffff3b;
+        font-size: 18px;
     `;
-    
-    document.getElementById('terminalContent').innerHTML = html;
-    
-    for (let i = 0; i < 4; i++) {
-        let btn = document.getElementById(`choice${i+1}`);
-        if (act.options[i]) {
-            btn.textContent = getOptionText(act.options[i]);
-            btn.style.display = 'block';
-            btn.style.marginBottom = '12px';
-            btn.style.padding = '15px';
-        } else {
-            btn.style.display = 'none';
-        }
-    }
-    document.getElementById('choicesGrid').style.display = 'grid';
+    warningDiv.innerHTML = `⚠️ ${msg}`;
+    document.body.appendChild(warningDiv);
+    setTimeout(() => warningDiv.remove(), 3000);
 }
 
-function makeChoice(num) {
-    if (gameState.gameOver || gameState.victory || gameState.act > 6) return;
-    
-    let act = acts[gameState.act];
-    let choice = act.options[num-1];
-    if (!choice) return;
-    
-    gameState.totalChoices++;
-    if (choice.correct) {
-        gameState.correctChoices++;
-        showWarning(translations[currentLang].warningCorrect, 'success');
-    } else {
-        showWarning(translations[currentLang].warningError, 'danger');
+function moneyRain() {
+    for (let i = 0; i < 150; i++) {
+        setTimeout(() => {
+            const emojis = ['💰','💵','💶','💷','💎','🪙','💸','🏆','⭐','✨','🎉','🎊'];
+            const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+            const div = document.createElement('div');
+            div.innerHTML = emoji;
+            div.style.position = 'fixed';
+            div.style.left = Math.random() * 100 + '%';
+            div.style.top = '-50px';
+            div.style.fontSize = (20 + Math.random() * 40) + 'px';
+            div.style.animation = `fall ${1.5 + Math.random() * 3}s linear`;
+            div.style.zIndex = '9999';
+            div.style.pointerEvents = 'none';
+            div.style.filter = 'drop-shadow(0 0 15px gold)';
+            div.style.textShadow = '0 0 20px rgba(255,215,0,0.8)';
+            document.body.appendChild(div);
+            setTimeout(() => div.remove(), 5000);
+        }, i * 30);
     }
-    
-    gameState.budget = Math.min(100, Math.max(0, gameState.budget + (choice.effects.budget || 0)));
-    gameState.security = Math.min(100, Math.max(0, gameState.security + (choice.effects.security || 0)));
-    gameState.time = Math.min(100, Math.max(0, gameState.time + (choice.effects.time || 0)));
-    
-    gameState.history.push({
-        act: gameState.act,
-        choice: num,
-        correct: choice.correct,
-        threat: choice.threat
-    });
-    
-    updateDisplay();
-    
-    if (checkGameOver()) return;
-    
-    let threatHtml = '';
-    if (choice.threat) {
-        threatHtml = `
-            <div style="background:#2a1a1a; padding:15px; border-left:4px solid #ff3b3b; margin:15px 0; border-radius:5px;">
-                <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-                    <span style="font-size:24px;">⚠️</span>
-                    <span style="color:#ff3b3b; font-weight:bold; font-size:18px;">${currentLang === 'ru' ? 'УГРОЗА:' : (currentLang === 'en' ? 'THREAT:' : '威胁：')} ${getThreatName(choice.threat)}</span>
-                </div>
-                <p style="margin:10px 0; color:#a0a0b0;">${currentLang === 'ru' ? choice.threat.descRu : (currentLang === 'en' ? choice.threat.descEn : choice.threat.descZh)}</p>
-                <p style="margin:5px 0; color:#888;">${currentLang === 'ru' ? 'Таблица' : (currentLang === 'en' ? 'Table' : '表')} ${choice.threat.table} | ${currentLang === 'ru' ? 'Риск:' : (currentLang === 'en' ? 'Risk:' : '风险：')} ${getRiskText(choice.threat.risk)}</p>
-            </div>
-        `;
-    }
-    
-    let html = `
-        <div>
-            <div style="border-left:5px solid ${choice.correct ? '#00ff9d' : '#ff3b3b'}; padding:20px; background:#1a1a26; border-radius:10px;">
-                <h3 style="color:${choice.correct ? '#00ff9d' : '#ff3b3b'}; font-size:24px; margin-bottom:15px;">
-                    ${choice.correct ? '✓ ПРАВИЛЬНЫЙ ВЫБОР' : '✗ ОШИБКА'}
-                </h3>
-                
-                <div style="background:#1e1e2a; padding:20px; border-radius:10px; margin:15px 0;">
-                    <p style="margin:0; line-height:1.7; font-size:16px;">${getOptionResult(choice)}</p>
-                </div>
-                
-                ${threatHtml}
-                
-                <div style="background:linear-gradient(135deg,#1e2a1a,#1a1a26); padding:20px; border-radius:10px; margin:15px 0; border-left:4px solid #9d4edd;">
-                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:15px;">
-                        <span style="font-size:24px;">📚</span>
-                        <span style="color:#9d4edd; font-weight:bold; font-size:18px;">${currentLang === 'ru' ? 'ПОЯСНЕНИЕ ПО МЕТОДИКЕ:' : (currentLang === 'en' ? 'METHODOLOGY EXPLANATION:' : '方法说明：')}</span>
-                    </div>
-                    <p style="margin:0; white-space:pre-line; line-height:1.7; font-size:15px; color:#a0a0b0;">${getOptionExplain(choice)}</p>
-                </div>
-                
-                <div style="background:#1e1e2a; padding:15px; border-radius:10px;">
-                    <p style="color:#00f3ff; font-weight:bold; margin-bottom:15px;">📊 ${currentLang === 'ru' ? 'ИЗМЕНЕНИЕ РЕСУРСОВ:' : (currentLang === 'en' ? 'RESOURCE CHANGES:' : '资源变化：')}</p>
-                    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;">
-                        <div style="text-align:center;">
-                            <div style="font-size:24px;">💰</div>
-                            <div style="color:${choice.effects.budget > 0 ? '#00ff9d' : (choice.effects.budget < 0 ? '#ff3b3b' : '#888')}; font-weight:bold;">
-                                ${choice.effects.budget > 0 ? '+' : ''}${choice.effects.budget}%
-                            </div>
-                        </div>
-                        <div style="text-align:center;">
-                            <div style="font-size:24px;">🔒</div>
-                            <div style="color:${choice.effects.security > 0 ? '#00ff9d' : (choice.effects.security < 0 ? '#ff3b3b' : '#888')}; font-weight:bold;">
-                                ${choice.effects.security > 0 ? '+' : ''}${choice.effects.security}%
-                            </div>
-                        </div>
-                        <div style="text-align:center;">
-                            <div style="font-size:24px;">⏱️</div>
-                            <div style="color:${choice.effects.time < 0 ? '#00ff9d' : (choice.effects.time > 0 ? '#ff3b3b' : '#888')}; font-weight:bold;">
-                                ${choice.effects.time > 0 ? '+' : ''}${choice.effects.time}%
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div style="display:flex; gap:10px; margin-top:20px;">
-                    <button onclick="continueGame()" style="flex:1; background:linear-gradient(135deg,#1a1a26,#2a2a3a); border:3px solid #00f3ff; color:#00f3ff; padding:15px; border-radius:10px; font-size:18px; cursor:pointer; transition:0.3s;">
-                        ${translations[currentLang].continue} (АКТ ${gameState.act + 1})
-                    </button>
-                    <button onclick="showStats()" style="background:linear-gradient(135deg,#1a1a26,#2a2a3a); border:3px solid #9d4edd; color:#9d4edd; padding:15px 25px; border-radius:10px; font-size:18px; cursor:pointer;">
-                        📊
-                    </button>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    document.getElementById('terminalContent').innerHTML = html;
-    document.getElementById('choicesGrid').style.display = 'none';
-}
-
-function continueGame() {
-    if (gameState.gameOver || gameState.victory) return;
-    gameState.act++;
-    showAct();
-}
-
-function showStats() {
-    let accuracy = Math.round(gameState.correctChoices / gameState.totalChoices * 100) || 0;
-    let html = `
-        <div style="background:#1a1a26; padding:20px; border-radius:15px;">
-            <h3 style="color:#00f3ff; font-size:24px; margin-bottom:20px;">${translations[currentLang].stats}</h3>
-            
-            <div style="display:grid; gap:15px;">
-                <div style="background:#1e1e2a; padding:15px; border-radius:10px;">
-                    <div style="color:#888; margin-bottom:5px;">${translations[currentLang].correctAnswers}</div>
-                    <div style="font-size:32px; color:#00ff9d;">${gameState.correctChoices}/${gameState.totalChoices}</div>
-                </div>
-                
-                <div style="background:#1e1e2a; padding:15px; border-radius:10px;">
-                    <div style="color:#888; margin-bottom:5px;">${translations[currentLang].accuracy}</div>
-                    <div style="font-size:32px; color:#00f3ff;">${accuracy}%</div>
-                </div>
-                
-                <div style="background:#1e1e2a; padding:15px; border-radius:10px;">
-                    <div style="color:#888; margin-bottom:5px;">${currentLang === 'ru' ? 'Текущий этап' : (currentLang === 'en' ? 'Current stage' : '当前阶段')}</div>
-                    <div style="font-size:32px; color:#9d4edd;">${gameState.act}/6</div>
-                </div>
-            </div>
-            
-            <button onclick="continueGame()" style="width:100%; background:linear-gradient(135deg,#1a1a26,#2a2a3a); border:3px solid #00f3ff; color:#00f3ff; padding:15px; border-radius:10px; margin-top:20px; font-size:18px; cursor:pointer;">
-                ⬅️ ${translations[currentLang].backToGame}
-            </button>
-        </div>
-    `;
-    
-    document.getElementById('terminalContent').innerHTML = html;
-    document.getElementById('choicesGrid').style.display = 'none';
 }
 
 function restartGame() {
@@ -945,7 +978,8 @@ function restartGame() {
         totalChoices: 0,
         gameOver: false,
         victory: false,
-        history: []
+        history: [],
+        gameOverMsg: ""
     };
     updateDisplay();
     showAct();
@@ -979,7 +1013,7 @@ function showAllThreats() {
     let html = `<h3 style="color:#00f3ff; font-size:28px; margin-bottom:20px;">${translations[currentLang].threatsTitle}</h3>`;
     html += '<div style="background:#1a1a26; padding:20px; border-radius:15px;">';
     
-    let tables = {
+    const tables = {
         '1.1': ['T1.1', 'T1.2', 'T1.3', 'T1.4'],
         '1.2': ['T2.1', 'T2.2', 'T2.3', 'T2.4'],
         '1.3': ['T3.1', 'T3.2', 'T3.3'],
@@ -988,8 +1022,8 @@ function showAllThreats() {
         '1.6': ['T6.1', 'T6.2', 'T6.3']
     };
     
-    for (let [table, ids] of Object.entries(tables)) {
-        html += `<p style="margin:15px 0 5px 0; color:#00ff9d; font-size:18px;">${currentLang === 'ru' ? 'Таблица' : (currentLang === 'en' ? 'Table' : '表')} ${table}:</p>`;
+    for (const [table, ids] of Object.entries(tables)) {
+        html += `<p style="margin:15px 0 5px 0; color:#00ff9d; font-size:18px;">${translations[currentLang].table} ${table}:</p>`;
         ids.forEach(id => {
             html += `<p style="margin:3px 0 3px 20px; color:#a0a0b0;">• ${id}</p>`;
         });
@@ -1009,6 +1043,7 @@ function closeModal() {
 
 // ===== ИНИЦИАЛИЗАЦИЯ =====
 window.onload = function() {
+    // Добавляем кнопки выбора языка
     const header = document.querySelector('.game-header');
     if (header && !document.querySelector('.lang-buttons')) {
         const langDiv = document.createElement('div');
@@ -1022,6 +1057,9 @@ window.onload = function() {
         header.appendChild(langDiv);
     }
     
+    // Обновляем текст кнопок при загрузке
+    updateButtonsAndStaticTexts();
+    updateDisplay();
     showAct();
     
     window.onclick = function(e) {
