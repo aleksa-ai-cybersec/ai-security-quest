@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>AI Security Simulator | Диплом Воробьевой А.А.</title>
-    <meta name="description" content="Интерактивный симулятор аудита безопасности систем искусственного интеллекта. По методике из дипломной работы.">
+    <meta name="description" content="Интерактивный симулятор аудита безопасности систем искусственного интеллекта">
     
     <meta property="og:title" content="AI Security Simulator">
-    <meta property="og:description" content="Пройдите все этапы жизненного цикла ИИ и узнайте, какие угрозы ждут вашу модель">
-    <meta property="og:image" content="assets/preview.jpg">
+    <meta property="og:description" content="Пройдите все этапы жизненного цикла ИИ">
     <meta property="og:url" content="https://aleksa-ai-cybersec.github.io/ai-security-quest/">
     
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
@@ -23,24 +22,24 @@
             <div class="game-header">
                 <div class="title-wrapper">
                     <h1 class="glitch" data-text="AI SECURITY SIMULATOR">AI SECURITY SIMULATOR</h1>
-                    <div class="subtitle" id="subtitleText">--</div>
+                    <div class="subtitle" id="subtitleText"></div>
                 </div>
                 <div class="diploma-badge pulse">
-                    <span class="badge-year" id="badgeYear">--</span>
-                    <span class="badge-author" id="badgeAuthor">--</span>
+                    <span class="badge-year" id="badgeYear"></span>
+                    <span class="badge-author" id="badgeAuthor"></span>
                 </div>
             </div>
             
-            <!-- Прогресс-бар -->
+            <!-- Прогресс -->
             <div class="progress-section">
                 <div class="progress-label">
-                    <span class="progress-act" id="currentAct">--</span>
-                    <span class="progress-name" id="actName">--</span>
+                    <span class="progress-act" id="currentAct"></span>
+                    <span class="progress-name" id="actName"></span>
                 </div>
                 <div class="progress-track">
                     <div class="progress-fill" id="progressFill" style="width: 0%"></div>
                 </div>
-                <div class="progress-stats" id="actStats">--</div>
+                <div class="progress-stats" id="actStats"></div>
             </div>
             
             <!-- Ресурсы -->
@@ -49,44 +48,42 @@
                     <div class="resource-icon">💰</div>
                     <div class="resource-content">
                         <div class="resource-header">
-                            <span class="resource-label" id="budgetLabel">--</span>
-                            <span class="resource-value" id="budgetValue">0%</span>
+                            <span class="resource-label" id="budgetLabel"></span>
+                            <span class="resource-value" id="budgetValue">70%</span>
                         </div>
                         <div class="resource-bar-container">
-                            <div class="resource-bar" id="budgetBar" style="width: 0%"></div>
+                            <div class="resource-bar" id="budgetBar" style="width: 70%"></div>
                         </div>
                     </div>
                 </div>
-                
                 <div class="resource-card security">
                     <div class="resource-icon">🔒</div>
                     <div class="resource-content">
                         <div class="resource-header">
-                            <span class="resource-label" id="securityLabel">--</span>
-                            <span class="resource-value" id="securityValue">0%</span>
+                            <span class="resource-label" id="securityLabel"></span>
+                            <span class="resource-value" id="securityValue">40%</span>
                         </div>
                         <div class="resource-bar-container">
-                            <div class="resource-bar" id="securityBar" style="width: 0%"></div>
+                            <div class="resource-bar" id="securityBar" style="width: 40%"></div>
                         </div>
                     </div>
                 </div>
-                
                 <div class="resource-card time">
                     <div class="resource-icon">⏱️</div>
                     <div class="resource-content">
                         <div class="resource-header">
-                            <span class="resource-label" id="timeLabel">--</span>
-                            <span class="resource-value" id="timeValue">0%</span>
+                            <span class="resource-label" id="timeLabel"></span>
+                            <span class="resource-value" id="timeValue">60%</span>
                         </div>
                         <div class="resource-bar-container">
-                            <div class="resource-bar" id="timeBar" style="width: 0%"></div>
+                            <div class="resource-bar" id="timeBar" style="width: 60%"></div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Терминальное окно -->
-            <div class="terminal-window" id="terminalWindow">
+            <!-- Терминал -->
+            <div class="terminal-window">
                 <div class="terminal-header">
                     <span class="terminal-dot red"></span>
                     <span class="terminal-dot yellow"></span>
@@ -98,32 +95,32 @@
             
             <!-- Кнопки выбора -->
             <div class="choices-grid" id="choicesGrid">
-                <button class="choice-btn" id="choice1" onclick="makeChoice(1)">--</button>
-                <button class="choice-btn" id="choice2" onclick="makeChoice(2)">--</button>
-                <button class="choice-btn" id="choice3" onclick="makeChoice(3)">--</button>
-                <button class="choice-btn" id="choice4" onclick="makeChoice(4)">--</button>
+                <button class="choice-btn" id="choice1" onclick="makeChoice(1)"></button>
+                <button class="choice-btn" id="choice2" onclick="makeChoice(2)"></button>
+                <button class="choice-btn" id="choice3" onclick="makeChoice(3)"></button>
+                <button class="choice-btn" id="choice4" onclick="makeChoice(4)"></button>
             </div>
             
             <!-- Панель управления -->
             <div class="control-panel">
                 <button class="control-btn restart" onclick="restartGame()">
-                    <span class="btn-icon">🔄</span> <span id="restartBtnText">--</span>
+                    <span class="btn-icon">🔄</span> <span id="restartBtnText"></span>
                 </button>
                 <button class="control-btn diploma" onclick="showDiplomaLinks()">
-                    <span class="btn-icon">📚</span> <span id="diplomaBtnText">--</span>
+                    <span class="btn-icon">📚</span> <span id="diplomaBtnText"></span>
                 </button>
                 <button class="control-btn threats" onclick="showAllThreats()">
-                    <span class="btn-icon">⚠️</span> <span id="threatsBtnText">--</span>
+                    <span class="btn-icon">⚠️</span> <span id="threatsBtnText"></span>
                 </button>
             </div>
             
             <!-- Подвал -->
             <div class="game-footer">
-                <p>© 2026 <span id="authorName">--</span> | <span id="universityName">--</span></p>
+                <p>© 2026 <span id="authorName"></span> | <span id="universityName"></span></p>
                 <p class="footer-links">
                     <a href="https://github.com/aleksa-ai-cybersec/ai-security-quest" target="_blank">GitHub</a> | 
-                    <a href="#" onclick="showDiplomaLinks()" id="footerDiplomaLink">--</a> | 
-                    <a href="#" onclick="showAllThreats()" id="footerThreatsLink">--</a>
+                    <a href="#" onclick="showDiplomaLinks()" id="footerDiplomaLink"></a> | 
+                    <a href="#" onclick="showAllThreats()" id="footerThreatsLink"></a>
                 </p>
             </div>
         </div>
@@ -133,12 +130,12 @@
     <div class="modal" id="infoModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modalTitle">--</h2>
+                <h2 id="modalTitle"></h2>
                 <span class="modal-close" onclick="closeModal()">&times;</span>
             </div>
             <div class="modal-body" id="modalBody"></div>
             <div class="modal-footer">
-                <button class="modal-btn" onclick="closeModal()" id="modalCloseBtn">--</button>
+                <button class="modal-btn" onclick="closeModal()" id="modalCloseBtn"></button>
             </div>
         </div>
     </div>
