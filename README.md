@@ -92,6 +92,11 @@
 
 
 
+
+
+
+
+
 # AI Security Simulator 🎮
 
 Interactive simulator for auditing the security of artificial intelligence systems.
@@ -181,6 +186,11 @@ Moscow State Linguistic University
 Institute of Information Sciences  
 Department of International Information Security  
 2026
+
+
+
+
+
 
 
 
