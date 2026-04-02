@@ -88,14 +88,7 @@
 Кафедра международной информационной безопасности  
 2026
 
-
-
-
-
-
-
-
-
+---
 
 # AI Security Simulator 🎮
 
@@ -187,14 +180,7 @@ Institute of Information Sciences
 Department of International Information Security  
 2026
 
-
-
-
-
-
-
-
-
+---
 
 # AI Security Simulator 🎮
 
