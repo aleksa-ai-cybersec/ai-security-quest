@@ -459,7 +459,7 @@ function showVictory() {
                 
                 <div style="background:#1e1e2a; padding:20px; border-radius:15px; margin-top:25px;">
                     <p style="color:#00f3ff; font-size:22px;">🎓 Дипломная работа Воробьевой А.А., МГЛУ, 2026</p>
-                    <p style="color:#a0a0b0; font-size:18px;">Тема: Разработка методики аудита ИБ систем с ИИ</p>
+                    <p style="color:#a0a0b0; font-size:18px;">Тема: Разработка методики аудита  систем с ИИ</p>
                 </div>
             </div>
             
