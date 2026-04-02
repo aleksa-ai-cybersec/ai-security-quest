@@ -6,27 +6,20 @@
     <title>AI Security Simulator | Диплом Воробьевой А.А.</title>
     <meta name="description" content="Интерактивный симулятор аудита безопасности систем искусственного интеллекта. По методике из дипломной работы.">
     
-    <!-- Open Graph для соцсетей -->
     <meta property="og:title" content="AI Security Simulator">
     <meta property="og:description" content="Пройдите все этапы жизненного цикла ИИ и узнайте, какие угрозы ждут вашу модель">
     <meta property="og:image" content="assets/preview.jpg">
     <meta property="og:url" content="https://aleksa-ai-cybersec.github.io/ai-security-quest/">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    
-    <!-- Шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    
-    <!-- Основные стили -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="game-wrapper">
-        <!-- Главный контейнер -->
         <div class="game-container">
             
-            <!-- Шапка с неоновым эффектом -->
+            <!-- Шапка -->
             <div class="game-header">
                 <div class="title-wrapper">
                     <h1 class="glitch" data-text="AI SECURITY SIMULATOR">AI SECURITY SIMULATOR</h1>
@@ -38,29 +31,29 @@
                 </div>
             </div>
             
-            <!-- Прогресс-бар с неоновым свечением -->
+            <!-- Прогресс-бар -->
             <div class="progress-section">
                 <div class="progress-label">
-                    <span class="progress-act" id="currentAct">Акт 1/5</span>
-                    <span class="progress-name" id="actName">Сбор и подготовка данных</span>
+                    <span class="progress-act" id="currentAct">--</span>
+                    <span class="progress-name" id="actName">--</span>
                 </div>
                 <div class="progress-track">
-                    <div class="progress-fill" id="progressFill" style="width: 20%"></div>
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
                 </div>
-                <div class="progress-stats" id="actStats">Таблица 1.1 | Уязвимость: 33.3%</div>
+                <div class="progress-stats" id="actStats">--</div>
             </div>
             
-            <!-- Ресурсы с неоновыми индикаторами -->
+            <!-- Ресурсы -->
             <div class="resources-panel">
                 <div class="resource-card budget">
                     <div class="resource-icon">💰</div>
                     <div class="resource-content">
                         <div class="resource-header">
-                            <span class="resource-label">БЮДЖЕТ</span>
-                            <span class="resource-value" id="budgetValue">65%</span>
+                            <span class="resource-label" id="budgetLabel">--</span>
+                            <span class="resource-value" id="budgetValue">0%</span>
                         </div>
                         <div class="resource-bar-container">
-                            <div class="resource-bar" id="budgetBar" style="width: 65%"></div>
+                            <div class="resource-bar" id="budgetBar" style="width: 0%"></div>
                         </div>
                     </div>
                 </div>
@@ -69,11 +62,11 @@
                     <div class="resource-icon">🔒</div>
                     <div class="resource-content">
                         <div class="resource-header">
-                            <span class="resource-label">БЕЗОПАСНОСТЬ</span>
-                            <span class="resource-value" id="securityValue">35%</span>
+                            <span class="resource-label" id="securityLabel">--</span>
+                            <span class="resource-value" id="securityValue">0%</span>
                         </div>
                         <div class="resource-bar-container">
-                            <div class="resource-bar" id="securityBar" style="width: 35%"></div>
+                            <div class="resource-bar" id="securityBar" style="width: 0%"></div>
                         </div>
                     </div>
                 </div>
@@ -82,17 +75,17 @@
                     <div class="resource-icon">⏱️</div>
                     <div class="resource-content">
                         <div class="resource-header">
-                            <span class="resource-label">ВРЕМЯ</span>
-                            <span class="resource-value" id="timeValue">75%</span>
+                            <span class="resource-label" id="timeLabel">--</span>
+                            <span class="resource-value" id="timeValue">0%</span>
                         </div>
                         <div class="resource-bar-container">
-                            <div class="resource-bar" id="timeBar" style="width: 75%"></div>
+                            <div class="resource-bar" id="timeBar" style="width: 0%"></div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Основное окно с контентом (терминальный стиль) -->
+            <!-- Терминальное окно -->
             <div class="terminal-window" id="terminalWindow">
                 <div class="terminal-header">
                     <span class="terminal-dot red"></span>
@@ -100,56 +93,52 @@
                     <span class="terminal-dot green"></span>
                     <span class="terminal-title">audit@diploma:~/ai-security-simulator</span>
                 </div>
-                <div class="terminal-content" id="terminalContent">
-                    <!-- Сюда будет подгружаться контент -->
-                </div>
+                <div class="terminal-content" id="terminalContent"></div>
             </div>
             
-            <!-- Кнопки выбора (4 варианта) -->
+            <!-- Кнопки выбора -->
             <div class="choices-grid" id="choicesGrid">
-                <button class="choice-btn" id="choice1" onclick="makeChoice(1)">Загрузка...</button>
-                <button class="choice-btn" id="choice2" onclick="makeChoice(2)">Загрузка...</button>
-                <button class="choice-btn" id="choice3" onclick="makeChoice(3)">Загрузка...</button>
-                <button class="choice-btn" id="choice4" onclick="makeChoice(4)">Загрузка...</button>
+                <button class="choice-btn" id="choice1" onclick="makeChoice(1)">--</button>
+                <button class="choice-btn" id="choice2" onclick="makeChoice(2)">--</button>
+                <button class="choice-btn" id="choice3" onclick="makeChoice(3)">--</button>
+                <button class="choice-btn" id="choice4" onclick="makeChoice(4)">--</button>
             </div>
             
             <!-- Панель управления -->
             <div class="control-panel">
                 <button class="control-btn restart" onclick="restartGame()">
-                    <span class="btn-icon">🔄</span> <span>Начать заново</span>
+                    <span class="btn-icon">🔄</span> <span id="restartBtnText">--</span>
                 </button>
                 <button class="control-btn diploma" onclick="showDiplomaLinks()">
-                    <span class="btn-icon">📚</span> <span>Связь с дипломом</span>
+                    <span class="btn-icon">📚</span> <span id="diplomaBtnText">--</span>
                 </button>
                 <button class="control-btn threats" onclick="showAllThreats()">
-                    <span class="btn-icon">⚠️</span> <span>Все 27 угроз</span>
+                    <span class="btn-icon">⚠️</span> <span id="threatsBtnText">--</span>
                 </button>
             </div>
             
-            <!-- Подвал - ИСПРАВЛЕНО: добавлен span id="authorName" -->
+            <!-- Подвал -->
             <div class="game-footer">
-                <p>© 2026 <span id="authorName">Воробьева Александра Александровна</span> | Московский государственный лингвистический университет</p>
+                <p>© 2026 <span id="authorName">--</span> | Московский государственный лингвистический университет</p>
                 <p class="footer-links">
                     <a href="https://github.com/aleksa-ai-cybersec/ai-security-quest" target="_blank">GitHub</a> | 
-                    <a href="#" onclick="showDiplomaLinks()">О дипломе</a> | 
-                    <a href="#" onclick="showAllThreats()">Все угрозы</a>
+                    <a href="#" onclick="showDiplomaLinks()" id="footerDiplomaLink">--</a> | 
+                    <a href="#" onclick="showAllThreats()" id="footerThreatsLink">--</a>
                 </p>
             </div>
         </div>
     </div>
     
-    <!-- Модальное окно для информации -->
+    <!-- Модальное окно -->
     <div class="modal" id="infoModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modalTitle">Информация</h2>
+                <h2 id="modalTitle">--</h2>
                 <span class="modal-close" onclick="closeModal()">&times;</span>
             </div>
-            <div class="modal-body" id="modalBody">
-                <!-- Сюда подгружается контент -->
-            </div>
+            <div class="modal-body" id="modalBody"></div>
             <div class="modal-footer">
-                <button class="modal-btn" onclick="closeModal()">Закрыть</button>
+                <button class="modal-btn" onclick="closeModal()" id="modalCloseBtn">--</button>
             </div>
         </div>
     </div>
