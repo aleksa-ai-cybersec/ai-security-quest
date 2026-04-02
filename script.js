@@ -8,6 +8,10 @@
 const translations = {
     ru: {
         authorName: "Воробьева Александра Александровна",
+        subtitle: "по методике аудита ИБ ИИ-систем",
+        badgeYear: "МГЛУ, 2026",
+        badgeAuthor: "Воробьева А.А.",
+        university: "Московский государственный лингвистический университет",
         act: "АКТ",
         table: "ТАБЛИЦА",
         vulnerability: "УЯЗВИМОСТЬ",
@@ -54,6 +58,10 @@ const translations = {
     },
     en: {
         authorName: "VOROBEVA ALEKSANDRA",
+        subtitle: "according to the AI security audit methodology",
+        badgeYear: "MSLU, 2026",
+        badgeAuthor: "VOROBEVA A.A.",
+        university: "Moscow State Linguistic University",
         act: "ACT",
         table: "TABLE",
         vulnerability: "VULNERABILITY",
@@ -100,6 +108,10 @@ const translations = {
     },
     zh: {
         authorName: "VOROBEVA ALEKSANDRA",
+        subtitle: "根据人工智能安全审计方法",
+        badgeYear: "莫斯科国立语言大学，2026",
+        badgeAuthor: "VOROBEVA A.A.",
+        university: "莫斯科国立语言大学",
         act: "阶段",
         table: "表",
         vulnerability: "漏洞率",
@@ -518,6 +530,15 @@ function getOptionExplain(opt) {
 
 // ===== ФУНКЦИИ ИНТЕРФЕЙСА =====
 function updateAllStaticTexts() {
+    // Шапка
+    const subtitleText = document.getElementById('subtitleText');
+    const badgeYear = document.getElementById('badgeYear');
+    const badgeAuthor = document.getElementById('badgeAuthor');
+    if (subtitleText) subtitleText.textContent = translations[currentLang].subtitle;
+    if (badgeYear) badgeYear.textContent = translations[currentLang].badgeYear;
+    if (badgeAuthor) badgeAuthor.textContent = translations[currentLang].badgeAuthor;
+    
+    // Ресурсы
     const budgetLabel = document.getElementById('budgetLabel');
     const securityLabel = document.getElementById('securityLabel');
     const timeLabel = document.getElementById('timeLabel');
@@ -525,6 +546,7 @@ function updateAllStaticTexts() {
     if (securityLabel) securityLabel.textContent = translations[currentLang].security;
     if (timeLabel) timeLabel.textContent = translations[currentLang].time;
     
+    // Кнопки управления
     const restartBtnText = document.getElementById('restartBtnText');
     const diplomaBtnText = document.getElementById('diplomaBtnText');
     const threatsBtnText = document.getElementById('threatsBtnText');
@@ -532,14 +554,18 @@ function updateAllStaticTexts() {
     if (diplomaBtnText) diplomaBtnText.textContent = translations[currentLang].diplomaLink;
     if (threatsBtnText) threatsBtnText.textContent = translations[currentLang].allThreats;
     
+    // Подвал
     const authorNameSpan = document.getElementById('authorName');
+    const universityName = document.getElementById('universityName');
     if (authorNameSpan) authorNameSpan.textContent = translations[currentLang].authorName;
+    if (universityName) universityName.textContent = translations[currentLang].university;
     
     const footerDiplomaLink = document.getElementById('footerDiplomaLink');
     const footerThreatsLink = document.getElementById('footerThreatsLink');
     if (footerDiplomaLink) footerDiplomaLink.textContent = translations[currentLang].diplomaLink;
     if (footerThreatsLink) footerThreatsLink.textContent = translations[currentLang].allThreats;
     
+    // Модальное окно
     const modalCloseBtn = document.getElementById('modalCloseBtn');
     if (modalCloseBtn) modalCloseBtn.textContent = translations[currentLang].close;
 }
