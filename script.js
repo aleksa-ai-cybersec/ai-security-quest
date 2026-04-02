@@ -4,7 +4,7 @@
 // МГЛУ, 2026 | Воробьева А.А.
 // ============================================
 
-// ===== ПЕРЕВОДЫ (ПОЛНЫЕ) =====
+// ===== ПЕРЕВОДЫ =====
 const translations = {
     ru: {
         authorName: "Воробьева Александра Александровна",
@@ -148,7 +148,7 @@ const translations = {
 
 let currentLang = 'ru';
 
-// ===== ИНИЦИАЛИЗАЦИЯ СОСТОЯНИЯ =====
+// ===== СОСТОЯНИЕ ИГРЫ =====
 let gameState = {
     act: 1,
     budget: 70,
@@ -162,7 +162,7 @@ let gameState = {
     gameOverMsg: ""
 };
 
-// ===== ВСЕ УГРОЗЫ ИЗ ДИПЛОМА =====
+// ===== УГРОЗЫ =====
 const threats = {
     t1: { id: "T1.1", nameRu: "Отравление данных", nameEn: "Data Poisoning", nameZh: "数据投毒", descRu: "Внесение искаженных данных в обучающую выборку", descEn: "Insertion of distorted data into the training set", descZh: "向训练集中插入扭曲数据", table: "1.1", risk: "Критический" },
     t2: { id: "T1.4", nameRu: "Нарушение конфиденциальности", nameEn: "Privacy Violation", nameZh: "隐私侵犯", descRu: "Сбор данных без согласия субъектов", descEn: "Data collection without consent", descZh: "未经同意收集数据", table: "1.1", risk: "Высокий" },
@@ -208,7 +208,7 @@ function getRiskText(risk) {
     return risk;
 }
 
-// ===== СТАТИСТИКА ЭТАПОВ ИЗ ДИПЛОМА =====
+// ===== СТАТИСТИКА ЭТАПОВ =====
 const actStats = {
     1: { nameRu: "Сбор данных", nameEn: "Data Collection", nameZh: "数据收集", vulnerability: "33.3%", table: "1.1", color: "#ff9f1c" },
     2: { nameRu: "Обучение", nameEn: "Training", nameZh: "训练", vulnerability: "71.4%", table: "1.2", color: "#ff6b1c" },
@@ -236,8 +236,7 @@ const acts = {
         descEn: "NeuroGen is developing AI for a bank. Where to get training data?",
         descZh: "NeuroGen正在为银行开发AI。从哪里获取训练数据？",
         options: [
-            { id: 1, textRu: "💰 Аккредитованный поставщик", textEn: "💰 Accredited vendor", textZh: "💰 认证数据供应商", 
-              correct: true, threat: null,
+            { id: 1, textRu: "💰 Аккредитованный поставщик", textEn: "💰 Accredited vendor", textZh: "💰 认证数据供应商", correct: true, threat: null,
               resultRu: "Поставщик предоставил сертификат качества и лицензию. Данные чистые и легальные.",
               resultEn: "The vendor provided quality certificate and license. Data is clean and legal.",
               resultZh: "供应商提供了质量证书和许可证。数据干净合法。",
@@ -245,8 +244,7 @@ const acts = {
               explainEn: "✓ CORRECT! An accredited vendor guarantees data quality and legality.",
               explainZh: "✓ 正确！认证供应商保证数据质量和合法性。",
               effects: { budget: -10, security: +5, time: +5 } },
-            { id: 2, textRu: "🌐 Открытые источники", textEn: "🌐 Open sources", textZh: "🌐 公开数据源", 
-              correct: false, threat: threats.t2,
+            { id: 2, textRu: "🌐 Открытые источники", textEn: "🌐 Open sources", textZh: "🌐 公开数据源", correct: false, threat: threats.t2,
               resultRu: "Юристы нашли персональные данные клиентов. Грозят многомиллионные штрафы!",
               resultEn: "Lawyers found personal client data. Multimillion-dollar fines!",
               resultZh: "律师发现了客户个人数据。面临数百万罚款！",
@@ -254,8 +252,7 @@ const acts = {
               explainEn: "✗ ERROR! Privacy violation (T1.4).",
               explainZh: "✗ 错误！隐私侵犯 (T1.4)。",
               effects: { budget: -15, security: -15, time: +10 } },
-            { id: 3, textRu: "👥 Фрилансеры", textEn: "👥 Freelancers", textZh: "👥 众包标注", 
-              correct: false, threat: threats.t3,
+            { id: 3, textRu: "👥 Фрилансеры", textEn: "👥 Freelancers", textZh: "👥 众包标注", correct: false, threat: threats.t3,
               resultRu: "Качество разметки ужасное (40% ошибок). Часть данных утекла.",
               resultEn: "Poor labeling quality (40% errors). Data leaked.",
               resultZh: "标注质量差（40%错误）。数据泄露。",
@@ -263,8 +260,7 @@ const acts = {
               explainEn: "✗ ERROR! Labeling errors (T1.3).",
               explainZh: "✗ 错误！标注错误 (T1.3)。",
               effects: { budget: -5, security: -10, time: +15 } },
-            { id: 4, textRu: "🤖 Синтетические данные", textEn: "🤖 Synthetic data", textZh: "🤖 合成数据", 
-              correct: false, threat: null,
+            { id: 4, textRu: "🤖 Синтетические данные", textEn: "🤖 Synthetic data", textZh: "🤖 合成数据", correct: false, threat: null,
               resultRu: "Данные безопасны, но модель не работает в реальности.",
               resultEn: "Data is safe, but model fails in reality.",
               resultZh: "数据安全，但模型在现实中失效。",
@@ -282,8 +278,7 @@ const acts = {
         descEn: "Data is ready. Where to deploy model training?",
         descZh: "数据已准备就绪。在哪里部署模型训练？",
         options: [
-            { id: 1, textRu: "☁️ AWS Enterprise", textEn: "☁️ AWS Enterprise", textZh: "☁️ AWS 企业版", 
-              correct: true, threat: null,
+            { id: 1, textRu: "☁️ AWS Enterprise", textEn: "☁️ AWS Enterprise", textZh: "☁️ AWS 企业版", correct: true, threat: null,
               resultRu: "AWS предоставляет сертификацию ISO 27001. Инфраструктура защищена.",
               resultEn: "AWS provides ISO 27001 certification. Infrastructure is secure.",
               resultZh: "AWS提供ISO 27001认证。基础设施安全。",
@@ -291,8 +286,7 @@ const acts = {
               explainEn: "✓ CORRECT! AWS Enterprise with ISO 27001 provides basic protection.",
               explainZh: "✓ 正确！具有ISO 27001的AWS企业版提供基本保护。",
               effects: { budget: -20, security: +10, time: 0 } },
-            { id: 2, textRu: "🟢 Google Cloud", textEn: "🟢 Google Cloud", textZh: "🟢 谷歌云", 
-              correct: false, threat: threats.t4,
+            { id: 2, textRu: "🟢 Google Cloud", textEn: "🟢 Google Cloud", textZh: "🟢 谷歌云", correct: false, threat: threats.t4,
               resultRu: "Google может использовать ваши данные для обучения своих моделей.",
               resultEn: "Google may use your data to train their models.",
               resultZh: "谷歌可能使用您的数据训练其模型。",
@@ -300,8 +294,7 @@ const acts = {
               explainEn: "✗ ERROR! Model theft risk (T2.1).",
               explainZh: "✗ 错误！模型盗窃风险 (T2.1)。",
               effects: { budget: -10, security: -15, time: +5 } },
-            { id: 3, textRu: "🏢 Свои сервера", textEn: "🏢 Own servers", textZh: "🏢 本地服务器", 
-              correct: false, threat: threats.t5,
+            { id: 3, textRu: "🏢 Свои сервера", textEn: "🏢 Own servers", textZh: "🏢 本地服务器", correct: false, threat: threats.t5,
               resultRu: "Сервера взломали. Код обучения скомпрометирован.",
               resultEn: "Servers hacked. Training code compromised.",
               resultZh: "服务器被入侵。训练代码被篡改。",
@@ -309,8 +302,7 @@ const acts = {
               explainEn: "✗ ERROR! Code compromise (T2.3).",
               explainZh: "✗ 错误！代码入侵 (T2.3)。",
               effects: { budget: -5, security: -25, time: +20 } },
-            { id: 4, textRu: "🐉 Китайское облако", textEn: "🐉 Chinese Cloud", textZh: "🐉 国内云平台", 
-              correct: false, threat: threats.t4,
+            { id: 4, textRu: "🐉 Китайское облако", textEn: "🐉 Chinese Cloud", textZh: "🐉 国内云平台", correct: false, threat: threats.t4,
               resultRu: "По местным законам все данные передаются властям. Модель скопирована.",
               resultEn: "By local laws, all data is transferred to authorities. Model copied.",
               resultZh: "根据当地法律，所有数据移交当局。模型被复制。",
@@ -328,8 +320,7 @@ const acts = {
         descEn: "Testers found strange anomalies. Your actions?",
         descZh: "测试人员发现异常。您的行动？",
         options: [
-            { id: 1, textRu: "🔍 Полное тестирование", textEn: "🔍 Full testing", textZh: "🔍 全面测试", 
-              correct: false, threat: null,
+            { id: 1, textRu: "🔍 Полное тестирование", textEn: "🔍 Full testing", textZh: "🔍 全面测试", correct: false, threat: null,
               resultRu: "Потратили месяц, нашли 5 багов, но конкуренты выпустили продукт раньше.",
               resultEn: "Spent a month, found 5 bugs, but competitors launched earlier.",
               resultZh: "耗时一个月，发现5个bug，但竞争对手提前发布。",
@@ -337,8 +328,7 @@ const acts = {
               explainEn: "✗ NOT OPTIMAL! Business risks matter. Need balance.",
               explainZh: "✗ 不理想！业务风险重要。需要平衡。",
               effects: { budget: -10, security: +15, time: +15 } },
-            { id: 2, textRu: "🚀 Выпустить сейчас", textEn: "🚀 Launch now", textZh: "🚀 立即发布", 
-              correct: false, threat: threats.t6,
+            { id: 2, textRu: "🚀 Выпустить сейчас", textEn: "🚀 Launch now", textZh: "🚀 立即发布", correct: false, threat: threats.t6,
               resultRu: "Модель в продакшне. Через день — критический сбой!",
               resultEn: "Model in production. Next day — critical failure!",
               resultZh: "模型上线。次日——严重故障！",
@@ -346,8 +336,7 @@ const acts = {
               explainEn: "✗ ERROR! Test data replacement (T3.1).",
               explainZh: "✗ 错误！测试数据替换 (T3.1)。",
               effects: { budget: -5, security: -30, time: -5 } },
-            { id: 3, textRu: "⚖️ Только критичное", textEn: "⚖️ Only critical", textZh: "⚖️ 仅关键测试", 
-              correct: false, threat: threats.t7,
+            { id: 3, textRu: "⚖️ Только критичное", textEn: "⚖️ Only critical", textZh: "⚖️ 仅关键测试", correct: false, threat: threats.t7,
               resultRu: "Часть багов пропустили. Они вылезут в самый неподходящий момент.",
               resultEn: "Some bugs were missed. They'll surface at the worst time.",
               resultZh: "遗漏部分bug。它们会在最糟时出现。",
@@ -355,8 +344,7 @@ const acts = {
               explainEn: "✗ ERROR! Hidden vulnerabilities (T3.3).",
               explainZh: "✗ 错误！隐藏漏洞 (T3.3)。",
               effects: { budget: -5, security: -15, time: +5 } },
-            { id: 4, textRu: "🔬 Нанять аудиторов", textEn: "🔬 Hire auditors", textZh: "🔬 聘请审计团队", 
-              correct: true, threat: null,
+            { id: 4, textRu: "🔬 Нанять аудиторов", textEn: "🔬 Hire auditors", textZh: "🔬 聘请审计团队", correct: true, threat: null,
               resultRu: "Аудиторы нашли 10 уязвимостей! Модель доработана и безопасна.",
               resultEn: "Auditors found 10 vulnerabilities! Model is refined and secure.",
               resultZh: "审计团队发现10个漏洞！模型已优化且安全。",
@@ -374,8 +362,7 @@ const acts = {
         descEn: "Model in production. Monitoring shows suspicious activity.",
         descZh: "模型已上线。监控显示可疑活动。",
         options: [
-            { id: 1, textRu: "🛡️ Rate limiting", textEn: "🛡️ Rate limiting", textZh: "🛡️ 请求限流", 
-              correct: false, threat: threats.t9,
+            { id: 1, textRu: "🛡️ Rate limiting", textEn: "🛡️ Rate limiting", textZh: "🛡️ 请求限流", correct: false, threat: threats.t9,
               resultRu: "Простые атаки отсекли, но сложные продолжаются.",
               resultEn: "Simple attacks blocked, but complex ones continue.",
               resultZh: "简单攻击被阻止，复杂攻击持续。",
@@ -383,8 +370,7 @@ const acts = {
               explainEn: "✗ INSUFFICIENT! Rate limiting doesn't prevent model theft.",
               explainZh: "✗ 不足！限流不能防止模型盗窃。",
               effects: { budget: -5, security: +5, time: 0 } },
-            { id: 2, textRu: "📊 Мониторинг паттернов", textEn: "📊 Pattern monitoring", textZh: "📊 异常行为监控", 
-              correct: true, threat: null,
+            { id: 2, textRu: "📊 Мониторинг паттернов", textEn: "📊 Pattern monitoring", textZh: "📊 异常行为监控", correct: true, threat: null,
               resultRu: "Система выявила попытку кражи модели через API. Атака заблокирована!",
               resultEn: "System detected model theft attempt via API. Attack blocked!",
               resultZh: "系统检测到API模型盗窃企图。攻击被阻止！",
@@ -392,8 +378,7 @@ const acts = {
               explainEn: "✓ CORRECT! Proactive monitoring is key to detecting attacks.",
               explainZh: "✓ 正确！主动监控是检测攻击的关键。",
               effects: { budget: -10, security: +20, time: +5 } },
-            { id: 3, textRu: "🔄 Переделать API", textEn: "🔄 Redesign API", textZh: "🔄 重新设计API", 
-              correct: false, threat: null,
+            { id: 3, textRu: "🔄 Переделать API", textEn: "🔄 Redesign API", textZh: "🔄 重新设计API", correct: false, threat: null,
               resultRu: "2 месяца разработки. Клиенты ушли к конкурентам.",
               resultEn: "2 months of development. Clients left to competitors.",
               resultZh: "开发2个月。客户流失给竞争对手。",
@@ -401,8 +386,7 @@ const acts = {
               explainEn: "✗ ERROR! Radical measures without analysis lead to failure.",
               explainZh: "✗ 错误！未经分析的激进措施导致失败。",
               effects: { budget: -25, security: +30, time: +25 } },
-            { id: 4, textRu: "⏸️ Игнорировать", textEn: "⏸️ Ignore", textZh: "⏸️ 忽略", 
-              correct: false, threat: threats.t8,
+            { id: 4, textRu: "⏸️ Игнорировать", textEn: "⏸️ Ignore", textZh: "⏸️ 忽略", correct: false, threat: threats.t8,
               resultRu: "Через месяц модель скопирована и продаётся конкурентами.",
               resultEn: "A month later, the model is copied and sold by competitors.",
               resultZh: "一个月后，模型被竞争对手复制并出售。",
@@ -420,8 +404,7 @@ const acts = {
         descEn: "Sharp spike in strange queries and drop in response quality. What to do?",
         descZh: "异常查询激增，响应质量下降。怎么办？",
         options: [
-            { id: 1, textRu: "🛑 DDoS-защита", textEn: "🛑 DDoS protection", textZh: "🛑 DDoS防护", 
-              correct: false, threat: threats.t10,
+            { id: 1, textRu: "🛑 DDoS-защита", textEn: "🛑 DDoS protection", textZh: "🛑 DDoS防护", correct: false, threat: threats.t10,
               resultRu: "Это были не DDoS, а состязательные атаки. Время упущено.",
               resultEn: "It wasn't DDoS, but adversarial attacks. Time lost.",
               resultZh: "不是DDoS，是对抗攻击。时间浪费。",
@@ -429,8 +412,7 @@ const acts = {
               explainEn: "✗ ERROR! Adversarial attacks (T5.1).",
               explainZh: "✗ 错误！对抗攻击 (T5.1)。",
               effects: { budget: -10, security: -10, time: +5 } },
-            { id: 2, textRu: "🔎 Ручной анализ", textEn: "🔎 Manual analysis", textZh: "🔎 手动分析", 
-              correct: false, threat: threats.t11,
+            { id: 2, textRu: "🔎 Ручной анализ", textEn: "🔎 Manual analysis", textZh: "🔎 手动分析", correct: false, threat: threats.t11,
               resultRu: "Месяц анализа. За это время утекли данные клиентов.",
               resultEn: "A month of analysis. Client data leaked.",
               resultZh: "分析一个月。期间客户数据泄露。",
@@ -438,8 +420,7 @@ const acts = {
               explainEn: "✗ ERROR! Prompt injections (T5.2).",
               explainZh: "✗ 错误！提示注入 (T5.2)。",
               effects: { budget: -10, security: +15, time: +25 } },
-            { id: 3, textRu: "⛔ Отключить API", textEn: "⛔ Disable API", textZh: "⛔ 禁用API", 
-              correct: false, threat: null,
+            { id: 3, textRu: "⛔ Отключить API", textEn: "⛔ Disable API", textZh: "⛔ 禁用API", correct: false, threat: null,
               resultRu: "Безопасность спасена. Но и бизнес тоже — клиенты ушли.",
               resultEn: "Security saved. But so is business — clients left.",
               resultZh: "安全保住。但业务也完了——客户流失。",
@@ -447,8 +428,7 @@ const acts = {
               explainEn: "✗ ERROR! Disabling service is a last resort.",
               explainZh: "✗ 错误！禁用服务是最后手段。",
               effects: { budget: -20, security: +30, time: +15 } },
-            { id: 4, textRu: "🤖 Интеллектуальный аудитор", textEn: "🤖 Intelligent Auditor", textZh: "🤖 智能审计系统", 
-              correct: true, threat: null,
+            { id: 4, textRu: "🤖 Интеллектуальный аудитор", textEn: "🤖 Intelligent Auditor", textZh: "🤖 智能审计系统", correct: true, threat: null,
               resultRu: "Ваш инструмент за 5 минут нашёл промпт-инъекции и заблокировал атаку!",
               resultEn: "Your tool found prompt injections in 5 minutes and blocked the attack!",
               resultZh: "您的工具5分钟内发现提示注入并阻止攻击！",
@@ -466,8 +446,7 @@ const acts = {
         descEn: "A year has passed. Need to update the model. How to organize the process?",
         descZh: "一年过去。需要更新模型。如何组织流程？",
         options: [
-            { id: 1, textRu: "🔄 Полностью автоматически", textEn: "🔄 Fully automatic", textZh: "🔄 全自动更新", 
-              correct: false, threat: threats.t12,
+            { id: 1, textRu: "🔄 Полностью автоматически", textEn: "🔄 Fully automatic", textZh: "🔄 全自动更新", correct: false, threat: threats.t12,
               resultRu: "Система откатилась к старой уязвимой версии.",
               resultEn: "System rolled back to old vulnerable version.",
               resultZh: "系统回滚到旧的有漏洞版本。",
@@ -475,8 +454,7 @@ const acts = {
               explainEn: "✗ ERROR! Rollback to vulnerable version (T6.1).",
               explainZh: "✗ 错误！回滚到有漏洞版本 (T6.1)。",
               effects: { budget: -5, security: -20, time: +5 } },
-            { id: 2, textRu: "👨‍💻 Ручная проверка", textEn: "👨‍💻 Manual verification", textZh: "👨‍💻 人工审核", 
-              correct: true, threat: null,
+            { id: 2, textRu: "👨‍💻 Ручная проверка", textEn: "👨‍💻 Manual verification", textZh: "👨‍💻 人工审核", correct: true, threat: null,
               resultRu: "Каждая версия проверена, целостность подтверждена. Обновление успешно!",
               resultEn: "Each version verified, integrity confirmed. Update successful!",
               resultZh: "每个版本已验证，完整性确认。更新成功！",
@@ -484,8 +462,7 @@ const acts = {
               explainEn: "✓ CORRECT! Integrity control is the foundation of MLOps security.",
               explainZh: "✓ 正确！完整性控制是MLOps安全基础。",
               effects: { budget: -5, security: +15, time: +15 } },
-            { id: 3, textRu: "🤖 Полуавтомат", textEn: "🤖 Semi-automatic", textZh: "🤖 半自动更新", 
-              correct: false, threat: threats.t13,
+            { id: 3, textRu: "🤖 Полуавтомат", textEn: "🤖 Semi-automatic", textZh: "🤖 半自动更新", correct: false, threat: threats.t13,
               resultRu: "В пайплайн внедрили вредоносный код. Модель отравлена.",
               resultEn: "Malicious code injected into pipeline. Model poisoned.",
               resultZh: "恶意代码注入流水线。模型被投毒。",
@@ -493,8 +470,7 @@ const acts = {
               explainEn: "✗ ERROR! Pipeline compromise (T6.2).",
               explainZh: "✗ 错误！流水线入侵 (T6.2)。",
               effects: { budget: -10, security: -25, time: +10 } },
-            { id: 4, textRu: "⏸️ Отложить", textEn: "⏸️ Postpone", textZh: "⏸️ 推迟", 
-              correct: false, threat: null,
+            { id: 4, textRu: "⏸️ Отложить", textEn: "⏸️ Postpone", textZh: "⏸️ 推迟", correct: false, threat: null,
               resultRu: "Модель устарела. Клиенты уходят к конкурентам.",
               resultEn: "Model outdated. Clients leave to competitors.",
               resultZh: "模型过时。客户流失给竞争对手。",
@@ -540,11 +516,55 @@ function getOptionExplain(opt) {
     return opt.explainZh;
 }
 
-// ===== ФУНКЦИЯ СМЕНЫ ЯЗЫКА =====
+// ===== ФУНКЦИИ ИНТЕРФЕЙСА =====
+function updateAllStaticTexts() {
+    const budgetLabel = document.getElementById('budgetLabel');
+    const securityLabel = document.getElementById('securityLabel');
+    const timeLabel = document.getElementById('timeLabel');
+    if (budgetLabel) budgetLabel.textContent = translations[currentLang].budget;
+    if (securityLabel) securityLabel.textContent = translations[currentLang].security;
+    if (timeLabel) timeLabel.textContent = translations[currentLang].time;
+    
+    const restartBtnText = document.getElementById('restartBtnText');
+    const diplomaBtnText = document.getElementById('diplomaBtnText');
+    const threatsBtnText = document.getElementById('threatsBtnText');
+    if (restartBtnText) restartBtnText.textContent = translations[currentLang].restart;
+    if (diplomaBtnText) diplomaBtnText.textContent = translations[currentLang].diplomaLink;
+    if (threatsBtnText) threatsBtnText.textContent = translations[currentLang].allThreats;
+    
+    const authorNameSpan = document.getElementById('authorName');
+    if (authorNameSpan) authorNameSpan.textContent = translations[currentLang].authorName;
+    
+    const footerDiplomaLink = document.getElementById('footerDiplomaLink');
+    const footerThreatsLink = document.getElementById('footerThreatsLink');
+    if (footerDiplomaLink) footerDiplomaLink.textContent = translations[currentLang].diplomaLink;
+    if (footerThreatsLink) footerThreatsLink.textContent = translations[currentLang].allThreats;
+    
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    if (modalCloseBtn) modalCloseBtn.textContent = translations[currentLang].close;
+}
+
+function updateDisplay() {
+    document.getElementById('budgetValue').textContent = gameState.budget + '%';
+    document.getElementById('securityValue').textContent = gameState.security + '%';
+    document.getElementById('timeValue').textContent = gameState.time + '%';
+    document.getElementById('budgetBar').style.width = gameState.budget + '%';
+    document.getElementById('securityBar').style.width = gameState.security + '%';
+    document.getElementById('timeBar').style.width = gameState.time + '%';
+    
+    document.getElementById('progressFill').style.width = ((gameState.act - 1) * 16.66) + '%';
+    document.getElementById('currentAct').textContent = `${translations[currentLang].act} ${gameState.act}/6`;
+    
+    if (actStats[gameState.act]) {
+        document.getElementById('actName').textContent = getActName(gameState.act);
+        document.getElementById('actStats').innerHTML = `${translations[currentLang].table} ${actStats[gameState.act].table} | <span style="color:${actStats[gameState.act].color};">${translations[currentLang].vulnerability}: ${actStats[gameState.act].vulnerability}</span>`;
+    }
+}
+
 function setLanguage(lang) {
     currentLang = lang;
+    updateAllStaticTexts();
     updateDisplay();
-    updateButtonsAndStaticTexts();
     
     if (!gameState.gameOver && !gameState.victory && gameState.act <= 6) {
         showAct();
@@ -553,49 +573,19 @@ function setLanguage(lang) {
     } else if (gameState.gameOver) {
         showGameOver(gameState.gameOverMsg);
     }
-}
-
-function updateButtonsAndStaticTexts() {
-    // Кнопки управления
-    const restartBtnSpan = document.querySelector('.control-btn.restart span:last-child');
-    const diplomaBtnSpan = document.querySelector('.control-btn.diploma span:last-child');
-    const threatsBtnSpan = document.querySelector('.control-btn.threats span:last-child');
-    if (restartBtnSpan) restartBtnSpan.textContent = translations[currentLang].restart;
-    if (diplomaBtnSpan) diplomaBtnSpan.textContent = translations[currentLang].diplomaLink;
-    if (threatsBtnSpan) threatsBtnSpan.textContent = translations[currentLang].allThreats;
     
-    // Подвал
-    const footerFirstP = document.querySelector('.game-footer p:first-child');
-    if (footerFirstP) {
-        footerFirstP.innerHTML = `© 2026 ${translations[currentLang].authorName} | Московский государственный лингвистический университет`;
-    }
-}
-
-// ===== ОСНОВНЫЕ ФУНКЦИИ ИГРЫ =====
-function updateDisplay() {
-    // Ресурсы
-    document.getElementById('budgetValue').textContent = gameState.budget + '%';
-    document.getElementById('securityValue').textContent = gameState.security + '%';
-    document.getElementById('timeValue').textContent = gameState.time + '%';
-    document.getElementById('budgetBar').style.width = gameState.budget + '%';
-    document.getElementById('securityBar').style.width = gameState.security + '%';
-    document.getElementById('timeBar').style.width = gameState.time + '%';
-    
-    // Заголовки ресурсов
-    const budgetLabel = document.querySelector('.resource-card.budget .resource-label');
-    const securityLabel = document.querySelector('.resource-card.security .resource-label');
-    const timeLabel = document.querySelector('.resource-card.time .resource-label');
-    if (budgetLabel) budgetLabel.textContent = translations[currentLang].budget;
-    if (securityLabel) securityLabel.textContent = translations[currentLang].security;
-    if (timeLabel) timeLabel.textContent = translations[currentLang].time;
-    
-    // Прогресс
-    document.getElementById('progressFill').style.width = ((gameState.act - 1) * 16.66) + '%';
-    document.getElementById('currentAct').textContent = `${translations[currentLang].act} ${gameState.act}/6`;
-    
-    if (actStats[gameState.act]) {
-        document.getElementById('actName').textContent = getActName(gameState.act);
-        document.getElementById('actStats').innerHTML = `${translations[currentLang].table} ${actStats[gameState.act].table} | <span style="color:${actStats[gameState.act].color};">${translations[currentLang].vulnerability}: ${actStats[gameState.act].vulnerability}</span>`;
+    const modal = document.getElementById('infoModal');
+    if (modal && modal.style.display === 'flex') {
+        const modalTitle = document.getElementById('modalTitle');
+        if (modalTitle && (modalTitle.textContent === 'О ДИПЛОМНОЙ РАБОТЕ' || 
+            modalTitle.textContent === 'ABOUT THE DIPLOMA' ||
+            modalTitle.textContent === '关于毕业论文')) {
+            showDiplomaLinks();
+        } else if (modalTitle && (modalTitle.textContent === 'ВСЕ УГРОЗЫ' ||
+            modalTitle.textContent === 'ALL THREATS' ||
+            modalTitle.textContent === '全部威胁')) {
+            showAllThreats();
+        }
     }
 }
 
@@ -1043,7 +1033,6 @@ function closeModal() {
 
 // ===== ИНИЦИАЛИЗАЦИЯ =====
 window.onload = function() {
-    // Добавляем кнопки выбора языка
     const header = document.querySelector('.game-header');
     if (header && !document.querySelector('.lang-buttons')) {
         const langDiv = document.createElement('div');
@@ -1057,8 +1046,7 @@ window.onload = function() {
         header.appendChild(langDiv);
     }
     
-    // Обновляем текст кнопок при загрузке
-    updateButtonsAndStaticTexts();
+    updateAllStaticTexts();
     updateDisplay();
     showAct();
     
