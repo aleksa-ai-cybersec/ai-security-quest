@@ -54,7 +54,22 @@ const translations = {
         projectsHave: "проектов имеют уязвимости на этом этапе",
         diplomaReference: "СВЯЗЬ С ДИПЛОМОМ",
         chooseSolution: "ВЫБЕРИТЕ РЕШЕНИЕ",
-        currentStage: "Текущий этап"
+        currentStage: "Текущий этап",
+        gameOverMessages: {
+            budget: "💰 Бюджет исчерпан. Стартап обанкротился.",
+            security: "🔒 Критическая утечка данных. Компания закрыта.",
+            timeTooHigh: "⏱️ Время вышло. Конкуренты заняли рынок.",
+            timeTooLow: "⏱️ Слишком быстро! Качество пострадало."
+        },
+        allThreatsTable: "ВСЕ 27 УГРОЗ (ПО ТАБЛИЦАМ ДИПЛОМА)",
+        totalThreats: "ВСЕГО: 27 УГРОЗ",
+        diplomaCompliance: "СООТВЕТСТВИЕ ДИПЛОМУ:",
+        tables: "Таблицы 1.1-1.6",
+        section33: "Параграф 3.3",
+        chapter2: "Глава 2",
+        appendixL: "Приложение Л",
+        gameComplies: "Игра полностью соответствует диплому!",
+        closeModal: "Закрыть"
     },
     en: {
         authorName: "VOROBEVA ALEKSANDRA",
@@ -104,7 +119,22 @@ const translations = {
         projectsHave: "of projects have vulnerabilities at this stage",
         diplomaReference: "DIPLOMA REFERENCE",
         chooseSolution: "CHOOSE SOLUTION",
-        currentStage: "Current stage"
+        currentStage: "Current stage",
+        gameOverMessages: {
+            budget: "💰 Budget exhausted. Startup bankrupt.",
+            security: "🔒 Critical data breach. Company closed.",
+            timeTooHigh: "⏱️ Time ran out. Competitors took the market.",
+            timeTooLow: "⏱️ Too fast! Quality suffered."
+        },
+        allThreatsTable: "ALL 27 THREATS (DIPLOMA TABLES)",
+        totalThreats: "TOTAL: 27 THREATS",
+        diplomaCompliance: "DIPLOMA COMPLIANCE:",
+        tables: "Tables 1.1-1.6",
+        section33: "Section 3.3",
+        chapter2: "Chapter 2",
+        appendixL: "Appendix L",
+        gameComplies: "The game fully complies with the diploma!",
+        closeModal: "Close"
     },
     zh: {
         authorName: "VOROBEVA ALEKSANDRA",
@@ -154,7 +184,22 @@ const translations = {
         projectsHave: "的项目在此阶段存在漏洞",
         diplomaReference: "论文参考",
         chooseSolution: "选择解决方案",
-        currentStage: "当前阶段"
+        currentStage: "当前阶段",
+        gameOverMessages: {
+            budget: "💰 预算耗尽。创业公司破产。",
+            security: "🔒 关键数据泄露。公司关闭。",
+            timeTooHigh: "⏱️ 时间耗尽。竞争对手占领市场。",
+            timeTooLow: "⏱️ 太快了！质量受损。"
+        },
+        allThreatsTable: "全部27种威胁（论文表格）",
+        totalThreats: "总计：27种威胁",
+        diplomaCompliance: "论文符合性：",
+        tables: "表1.1-1.6",
+        section33: "第3.3节",
+        chapter2: "第2章",
+        appendixL: "附录L",
+        gameComplies: "游戏完全符合论文要求！",
+        closeModal: "关闭"
     }
 };
 
@@ -570,6 +615,10 @@ function updateAllStaticTexts() {
     // Модальное окно
     const modalCloseBtn = document.getElementById('modalCloseBtn');
     if (modalCloseBtn) modalCloseBtn.textContent = translations[currentLang].close;
+    
+    // Кнопка закрытия в модальном окне
+    const closeModalBtn = document.getElementById('modalCloseBtn');
+    if (closeModalBtn) closeModalBtn.textContent = translations[currentLang].close;
 }
 
 function updateDisplay() {
@@ -605,13 +654,13 @@ function setLanguage(lang) {
     const modal = document.getElementById('infoModal');
     if (modal && modal.style.display === 'flex') {
         const modalTitle = document.getElementById('modalTitle');
-        if (modalTitle && (modalTitle.textContent === 'О ДИПЛОМНОЙ РАБОТЕ' || 
-            modalTitle.textContent === 'ABOUT THE DIPLOMA' ||
-            modalTitle.textContent === '关于毕业论文')) {
+        if (modalTitle && (modalTitle.textContent === translations.ru.aboutTitle || 
+            modalTitle.textContent === translations.en.aboutTitle ||
+            modalTitle.textContent === translations.zh.aboutTitle)) {
             showDiplomaLinks();
-        } else if (modalTitle && (modalTitle.textContent === 'ВСЕ УГРОЗЫ' ||
-            modalTitle.textContent === 'ALL THREATS' ||
-            modalTitle.textContent === '全部威胁')) {
+        } else if (modalTitle && (modalTitle.textContent === translations.ru.threatsTitle ||
+            modalTitle.textContent === translations.en.threatsTitle ||
+            modalTitle.textContent === translations.zh.threatsTitle)) {
             showAllThreats();
         }
     }
@@ -816,20 +865,21 @@ function showStats() {
 }
 
 function checkGameOver() {
+    const msg = translations[currentLang].gameOverMessages;
     if (gameState.budget <= 0) {
-        showGameOver('💰 Бюджет исчерпан. Стартап обанкротился.');
+        showGameOver(msg.budget);
         return true;
     }
     if (gameState.security <= 0) {
-        showGameOver('🔒 Критическая утечка данных. Компания закрыта.');
+        showGameOver(msg.security);
         return true;
     }
     if (gameState.time >= 100) {
-        showGameOver('⏱️ Время вышло. Конкуренты заняли рынок.');
+        showGameOver(msg.timeTooHigh);
         return true;
     }
     if (gameState.time <= 0) {
-        showGameOver('⏱️ Слишком быстро! Качество пострадало.');
+        showGameOver(msg.timeTooLow);
         return true;
     }
     return false;
@@ -920,7 +970,7 @@ function showVictory() {
                     <p style="margin:15px 0; font-size:18px;"><span style="color:#00f3ff;">${translations[currentLang].riskLevel}:</span> <span style="color:${riskColor}; font-weight:bold; font-size:22px;">${riskLevel}</span></p>
                     <p style="margin:15px 0; font-size:18px;"><span style="color:#00f3ff;">${translations[currentLang].correctAnswers}:</span> ${gameState.correctChoices}/${gameState.totalChoices}</p>
                     <p style="margin:15px 0; font-size:18px;"><span style="color:#00f3ff;">${translations[currentLang].threatsIdentified}:</span> ⚠️ 27</p>
-                    <p style="margin:15px 0; font-size:18px;"><span style="color:#00f3ff;">${translations[currentLang].recommendations}:</span> 📌 ${currentLang === 'ru' ? 'Приложение Л' : (currentLang === 'en' ? 'See Appendix L' : '见附录 L')}</p>
+                    <p style="margin:15px 0; font-size:18px;"><span style="color:#00f3ff;">${translations[currentLang].recommendations}:</span> 📌 ${currentLang === 'ru' ? 'Приложение Л' : (currentLang === 'en' ? 'Appendix L' : '附录 L')}</p>
                 </div>
                 
                 <div style="background:#1e1e2a; padding:20px; border-radius:15px; margin-top:25px;">
@@ -1014,21 +1064,21 @@ function showDiplomaLinks() {
             <p style="margin:15px 0; font-size:18px;">📖 ${currentLang === 'ru' ? 'Тема: Разработка методики аудита ИБ систем с ИИ' : (currentLang === 'en' ? 'Topic: AI Security Audit Methodology Development' : '主题：人工智能系统信息安全审计方法开发')}</p>
             
             <div style="background:#1e1e2a; padding:20px; border-radius:15px; margin:25px 0;">
-                <h4 style="color:#9d4edd; font-size:20px; margin-bottom:15px;">📊 ${currentLang === 'ru' ? 'СООТВЕТСТВИЕ ДИПЛОМУ:' : (currentLang === 'en' ? 'DIPLOMA COMPLIANCE:' : '论文符合性：')}</h4>
-                <p style="margin:8px 0;">✅ ${currentLang === 'ru' ? 'Таблицы 1.1-1.6 — все 27 угроз' : (currentLang === 'en' ? 'Tables 1.1-1.6 — all 27 threats' : '表1.1-1.6 — 全部27种威胁')}</p>
-                <p style="margin:8px 0;">✅ ${currentLang === 'ru' ? 'Параграф 3.3 — статистика уязвимостей' : (currentLang === 'en' ? 'Section 3.3 — vulnerability statistics' : '第3.3节 — 漏洞统计')}</p>
-                <p style="margin:8px 0;">✅ ${currentLang === 'ru' ? 'Глава 2 — методика аудита' : (currentLang === 'en' ? 'Chapter 2 — audit methodology' : '第2章 — 审计方法')}</p>
-                <p style="margin:8px 0;">✅ ${currentLang === 'ru' ? 'Приложение Л — рекомендации' : (currentLang === 'en' ? 'Appendix L — recommendations' : '附录L — 建议')}</p>
+                <h4 style="color:#9d4edd; font-size:20px; margin-bottom:15px;">📊 ${translations[currentLang].diplomaCompliance}</h4>
+                <p style="margin:8px 0;">✅ ${translations[currentLang].tables}</p>
+                <p style="margin:8px 0;">✅ ${translations[currentLang].section33}</p>
+                <p style="margin:8px 0;">✅ ${translations[currentLang].chapter2}</p>
+                <p style="margin:8px 0;">✅ ${translations[currentLang].appendixL}</p>
             </div>
             
-            <p style="color:#00ff9d; font-size:20px; margin:20px 0;">🎮 ${currentLang === 'ru' ? 'Игра полностью соответствует диплому!' : (currentLang === 'en' ? 'The game fully complies with the diploma!' : '游戏完全符合论文要求！')}</p>
+            <p style="color:#00ff9d; font-size:20px; margin:20px 0;">🎮 ${translations[currentLang].gameComplies}</p>
         </div>
     `;
     document.getElementById('infoModal').style.display = 'flex';
 }
 
 function showAllThreats() {
-    let html = `<h3 style="color:#00f3ff; font-size:28px; margin-bottom:20px;">${translations[currentLang].threatsTitle}</h3>`;
+    let html = `<h3 style="color:#00f3ff; font-size:28px; margin-bottom:20px;">${translations[currentLang].allThreatsTable}</h3>`;
     html += '<div style="background:#1a1a26; padding:20px; border-radius:15px;">';
     
     const tables = {
@@ -1047,7 +1097,7 @@ function showAllThreats() {
         });
     }
     
-    html += `<p style="margin:25px 0 0 0; color:#9d4edd; font-size:22px; text-align:center;">📌 ${currentLang === 'ru' ? 'ВСЕГО: 27 УГРОЗ' : (currentLang === 'en' ? 'TOTAL: 27 THREATS' : '总计：27种威胁')}</p>`;
+    html += `<p style="margin:25px 0 0 0; color:#9d4edd; font-size:22px; text-align:center;">📌 ${translations[currentLang].totalThreats}</p>`;
     html += '</div>';
     
     document.getElementById('modalTitle').textContent = translations[currentLang].threatsTitle;
