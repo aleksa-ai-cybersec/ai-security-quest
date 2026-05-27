@@ -12,13 +12,15 @@
 
 Это **обучающая игра**, которая погружает пользователя в роль CISO стартапа, разрабатывающего ИИ-систему. Игрок проходит все 6 этапов жизненного цикла ИИ и сталкивается с реальными угрозами из диплома.
 
-### Этапы:
-1. **Сбор и подготовка данных** (Таблица 1.1)
-2. **Разработка и обучение модели** (Таблица 1.2)  
-3. **Валидация и тестирование** (Таблица 1.3)
-4. **Развертывание** (Таблица 1.4)
-5. **Эксплуатация и мониторинг** (Таблица 1.5)
-6. **Обновление и переобучение** (Таблица 1.6)
+### Этапы и статистика уязвимостей (по рис. 3.4):
+| Этап | Процент уязвимых проектов | Таблица диплома |
+|------|---------------------------|-----------------|
+| 1. Сбор и подготовка данных | 33.3% | 1.1 |
+| 2. Разработка и обучение | 71.4% | 1.2 |
+| 3. Валидация и тестирование | 88.9% | 1.3 |
+| 4. Развертывание | 66.7% | 1.4 |
+| 5. Эксплуатация и мониторинг | 12.9% | 1.5 |
+| 6. Обновление и переобучение | 77.8% | 1.6 |
 
 ## ⚙️ Механика
 
@@ -27,33 +29,14 @@
 - 🔒 **Безопасность** (чем меньше, тем выше риск утечки)
 - ⏱️ **Время** (чем больше, тем ближе конкуренты)
 
-## 📊 Все угрозы из диплома (27 штук)
+## 🎮 Как играть
 
-| ID | Название | Риск | Таблица |
-|----|----------|------|---------|
-| T1.1 | Отравление данных | Высокий | 1.1 |
-| T1.2 | Компрометация источников данных | Высокий | 1.1 |
-| T1.3 | Несанкционированная модификация разметки | Средний | 1.1 |
-| T1.4 | Нарушение конфиденциальности при сборе | Средний | 1.1 |
-| T2.1 | Кража модели | Критический | 1.2 |
-| T2.2 | Отравление модели через гиперпараметры | Средний | 1.2 |
-| T2.3 | Компрометация кода обучения | Высокий | 1.2 |
-| T2.4 | Атаки на среду обучения | Высокий | 1.2 |
-| T3.1 | Подмена тестовых данных | Высокий | 1.3 |
-| T3.2 | Манипуляция метриками | Средний | 1.3 |
-| T3.3 | Сокрытие уязвимостей | Критический | 1.3 |
-| T4.1 | Подмена модели | Критический | 1.4 |
-| T4.2 | Небезопасная конфигурация API | Высокий | 1.4 |
-| T4.3 | Компрометация контейнеров | Высокий | 1.4 |
-| T5.1 | Состязательные атаки | Высокий | 1.5 |
-| T5.2 | Промпт-инъекции | Критический | 1.5 |
-| T5.3 | Несанкционированный доступ через API | Высокий | 1.5 |
-| T5.4 | Атаки на конфиденциальность | Высокий | 1.5 |
-| T5.5 | Изменение распределения данных | Средний | 1.5 |
-| T5.6 | DoS/DDoS-атаки | Средний | 1.5 |
-| T6.1 | Откат к уязвимой версии | Высокий | 1.6 |
-| T6.2 | Компрометация пайплайна обновлений | Критический | 1.6 |
-| T6.3 | Нарушение целостности при обновлении | Средний | 1.6 |
+На каждом этапе вам предлагается 4 варианта действий. Выбирайте правильные решения, чтобы:
+- Сохранить бюджет
+- Повысить уровень безопасности
+- Уложиться в сроки
+
+Неправильные решения приводят к активации реальных угроз из диплома и ухудшают показатели.
 
 ## 🚀 Как запустить
 
@@ -104,13 +87,15 @@ Diploma topic: *"Development of an information security audit methodology for sy
 
 This is an **educational game** that immerses the user in the role of a CISO of a startup developing an AI system. The player goes through all 6 stages of the AI lifecycle and encounters real threats from the diploma.
 
-### Stages:
-1. **Data Collection and Preparation** (Table 1.1)
-2. **Model Development and Training** (Table 1.2)  
-3. **Validation and Testing** (Table 1.3)
-4. **Deployment** (Table 1.4)
-5. **Operation and Monitoring** (Table 1.5)
-6. **Update and Retraining** (Table 1.6)
+### Stages and vulnerability statistics (according to Fig. 3.4):
+| Stage | Percentage of vulnerable projects | Diploma table |
+|-------|-----------------------------------|----------------|
+| 1. Data Collection and Preparation | 33.3% | 1.1 |
+| 2. Development and Training | 71.4% | 1.2 |
+| 3. Validation and Testing | 88.9% | 1.3 |
+| 4. Deployment | 66.7% | 1.4 |
+| 5. Operation and Monitoring | 12.9% | 1.5 |
+| 6. Update and Retraining | 77.8% | 1.6 |
 
 ## ⚙️ Mechanics
 
@@ -119,33 +104,14 @@ The player has 3 resources:
 - 🔒 **Security** (the lower, the higher the risk of leakage)
 - ⏱️ **Time** (the higher, the closer the competitors)
 
-## 📊 All threats from the diploma (27 total)
+## 🎮 How to play
 
-| ID | Name | Risk | Table |
-|----|------|------|-------|
-| T1.1 | Data Poisoning | High | 1.1 |
-| T1.2 | Data Source Compromise | High | 1.1 |
-| T1.3 | Unauthorized Label Modification | Medium | 1.1 |
-| T1.4 | Collection Privacy Violation | Medium | 1.1 |
-| T2.1 | Model Theft | Critical | 1.2 |
-| T2.2 | Hyperparameter Poisoning | Medium | 1.2 |
-| T2.3 | Training Code Compromise | High | 1.2 |
-| T2.4 | Training Environment Attacks | High | 1.2 |
-| T3.1 | Test Data Replacement | High | 1.3 |
-| T3.2 | Metric Manipulation | Medium | 1.3 |
-| T3.3 | Vulnerability Hiding | Critical | 1.3 |
-| T4.1 | Model Replacement | Critical | 1.4 |
-| T4.2 | Insecure API Configuration | High | 1.4 |
-| T4.3 | Container Compromise | High | 1.4 |
-| T5.1 | Adversarial Attacks | High | 1.5 |
-| T5.2 | Prompt Injections | Critical | 1.5 |
-| T5.3 | Unauthorized API Access | High | 1.5 |
-| T5.4 | Privacy Attacks | High | 1.5 |
-| T5.5 | Data Distribution Shift | Medium | 1.5 |
-| T5.6 | DoS/DDoS Attacks | Medium | 1.5 |
-| T6.1 | Rollback to Vulnerable Version | High | 1.6 |
-| T6.2 | Update Pipeline Compromise | Critical | 1.6 |
-| T6.3 | Update Integrity Violation | Medium | 1.6 |
+At each stage, you are offered 4 options. Choose the right decisions to:
+- Maintain your budget
+- Increase security level
+- Meet deadlines
+
+Wrong decisions trigger real threats from the diploma and worsen your metrics.
 
 ## 🚀 How to run
 
@@ -196,13 +162,15 @@ Department of International Information Security
 
 这是一款**教育游戏**，让用户扮演开发AI系统的初创公司CISO角色。玩家经历AI生命周期的全部6个阶段，并面对论文中的真实威胁。
 
-### 阶段：
-1. **数据收集与准备**（表1.1）
-2. **模型开发与训练**（表1.2）
-3. **验证与测试**（表1.3）
-4. **部署**（表1.4）
-5. **运行与监控**（表1.5）
-6. **更新与再训练**（表1.6）
+### 阶段和漏洞统计（根据图3.4）：
+| 阶段 | 易受攻击项目百分比 | 论文表 |
+|------|-------------------|--------|
+| 1. 数据收集与准备 | 33.3% | 1.1 |
+| 2. 开发与训练 | 71.4% | 1.2 |
+| 3. 验证与测试 | 88.9% | 1.3 |
+| 4. 部署 | 66.7% | 1.4 |
+| 5. 运行与监控 | 12.9% | 1.5 |
+| 6. 更新与再训练 | 77.8% | 1.6 |
 
 ## ⚙️ 游戏机制
 
@@ -211,33 +179,14 @@ Department of International Information Security
 - 🔒 **安全**（越低，泄露风险越高）
 - ⏱️ **时间**（越高，竞争对手越近）
 
-## 📊 论文中的所有威胁（共27种）
+## 🎮 如何游戏
 
-| ID | 名称 | 风险 | 表 |
-|----|------|------|-----|
-| T1.1 | 数据投毒 | 高危 | 1.1 |
-| T1.2 | 数据源入侵 | 高危 | 1.1 |
-| T1.3 | 未经授权的标注修改 | 中危 | 1.1 |
-| T1.4 | 收集时的隐私侵犯 | 中危 | 1.1 |
-| T2.1 | 模型盗窃 | 严重 | 1.2 |
-| T2.2 | 超参数投毒 | 中危 | 1.2 |
-| T2.3 | 训练代码入侵 | 高危 | 1.2 |
-| T2.4 | 训练环境攻击 | 高危 | 1.2 |
-| T3.1 | 测试数据替换 | 高危 | 1.3 |
-| T3.2 | 指标操纵 | 中危 | 1.3 |
-| T3.3 | 漏洞隐藏 | 严重 | 1.3 |
-| T4.1 | 模型替换 | 严重 | 1.4 |
-| T4.2 | 不安全API配置 | 高危 | 1.4 |
-| T4.3 | 容器入侵 | 高危 | 1.4 |
-| T5.1 | 对抗攻击 | 高危 | 1.5 |
-| T5.2 | 提示注入 | 严重 | 1.5 |
-| T5.3 | 未经授权的API访问 | 高危 | 1.5 |
-| T5.4 | 隐私攻击 | 高危 | 1.5 |
-| T5.5 | 数据分布变化 | 中危 | 1.5 |
-| T5.6 | DoS/DDoS攻击 | 中危 | 1.5 |
-| T6.1 | 回滚到有漏洞版本 | 高危 | 1.6 |
-| T6.2 | 更新流水线入侵 | 严重 | 1.6 |
-| T6.3 | 更新时的完整性破坏 | 中危 | 1.6 |
+每个阶段提供4个选项。选择正确的决策来：
+- 维持预算
+- 提高安全水平
+- 按时完成任务
+
+错误决策会触发论文中的真实威胁并恶化您的指标。
 
 ## 🚀 如何运行
 
