@@ -174,20 +174,20 @@ let gameState = {
     gameOverMsg: ""
 };
 
-// ===== УГРОЗЫ =====
+// ===== УГРОЗЫ (РИСКИ ИСПРАВЛЕНЫ ПО ТАБЛИЦЕ 3.2) =====
 const threats = {
-    t1: { id: "T1.1", nameRu: "Отравление данных", nameEn: "Data Poisoning", nameZh: "数据投毒", descRu: "Внесение искаженных данных в обучающую выборку", descEn: "Insertion of distorted data into the training set", descZh: "向训练集中插入扭曲数据", table: "1.1", risk: "Критический" },
+    t1: { id: "T1.1", nameRu: "Отравление данных", nameEn: "Data Poisoning", nameZh: "数据投毒", descRu: "Внесение искаженных данных в обучающую выборку", descEn: "Insertion of distorted data into the training set", descZh: "向训练集中插入扭曲数据", table: "1.1", risk: "Высокий" },
     t2: { id: "T1.4", nameRu: "Нарушение конфиденциальности", nameEn: "Privacy Violation", nameZh: "隐私侵犯", descRu: "Сбор данных без согласия субъектов", descEn: "Data collection without consent", descZh: "未经同意收集数据", table: "1.1", risk: "Высокий" },
-    t3: { id: "T1.3", nameRu: "Ошибки разметки", nameEn: "Labeling Errors", nameZh: "标注错误", descRu: "Некачественная разметка данных", descEn: "Poor quality data labeling", descZh: "低质量数据标注", table: "1.1", risk: "Средний" },
+    t3: { id: "T1.3", nameRu: "Ошибки разметки", nameEn: "Labeling Errors", nameZh: "标注错误", descRu: "Некачественная разметка данных", descEn: "Poor quality data labeling", descZh: "低质量数据标注", table: "1.1", risk: "Высокий" },
     t4: { id: "T2.1", nameRu: "Кража модели", nameEn: "Model Theft", nameZh: "模型盗窃", descRu: "Извлечение модели через API", descEn: "Model extraction via API", descZh: "通过API提取模型", table: "1.2", risk: "Критический" },
     t5: { id: "T2.3", nameRu: "Компрометация кода", nameEn: "Code Compromise", nameZh: "代码入侵", descRu: "Взлом серверов и внедрение бэкдоров", descEn: "Server hacking and backdoor injection", descZh: "服务器黑客攻击和后门注入", table: "1.2", risk: "Критический" },
-    t6: { id: "T3.1", nameRu: "Подмена тестовых данных", nameEn: "Test Data Replacement", nameZh: "测试数据替换", descRu: "Манипуляция с тестовой выборкой", descEn: "Test set manipulation", descZh: "测试集操纵", table: "1.3", risk: "Высокий" },
-    t7: { id: "T3.3", nameRu: "Скрытые уязвимости", nameEn: "Hidden Vulnerabilities", nameZh: "隐藏漏洞", descRu: "Непроверенные сценарии работы модели", descEn: "Untested model scenarios", descZh: "未测试的模型场景", table: "1.3", risk: "Высокий" },
+    t6: { id: "T3.1", nameRu: "Подмена тестовых данных", nameEn: "Test Data Replacement", nameZh: "测试数据替换", descRu: "Манипуляция с тестовой выборкой", descEn: "Test set manipulation", descZh: "测试集操纵", table: "1.3", risk: "Критический" },
+    t7: { id: "T3.3", nameRu: "Скрытые уязвимости", nameEn: "Hidden Vulnerabilities", nameZh: "隐藏漏洞", descRu: "Непроверенные сценарии работы модели", descEn: "Untested model scenarios", descZh: "未测试的模型场景", table: "1.3", risk: "Критический" },
     t8: { id: "T4.1", nameRu: "Подмена модели", nameEn: "Model Replacement", nameZh: "模型替换", descRu: "Замена легитимной модели на вредоносную", descEn: "Replacing legitimate model with malicious one", descZh: "用恶意模型替换合法模型", table: "1.4", risk: "Критический" },
     t9: { id: "T4.2", nameRu: "Небезопасный API", nameEn: "Insecure API", nameZh: "不安全API", descRu: "Отсутствие защиты API от атак", descEn: "Lack of API protection", descZh: "缺乏API保护", table: "1.4", risk: "Высокий" },
     t10: { id: "T5.1", nameRu: "Состязательные атаки", nameEn: "Adversarial Attacks", nameZh: "对抗攻击", descRu: "Специально сформированные входные данные", descEn: "Specially crafted input data", descZh: "特制输入数据", table: "1.5", risk: "Высокий" },
-    t11: { id: "T5.2", nameRu: "Промпт-инъекции", nameEn: "Prompt Injections", nameZh: "提示注入", descRu: "Обход инструкций модели", descEn: "Bypassing model instructions", descZh: "绕过模型指令", table: "1.5", risk: "Критический" },
-    t12: { id: "T6.1", nameRu: "Откат к уязвимой версии", nameEn: "Rollback to Vulnerable Version", nameZh: "回滚到有漏洞版本", descRu: "Возврат к старой версии с уязвимостями", descEn: "Reverting to old vulnerable version", descZh: "回滚到旧的有漏洞版本", table: "1.6", risk: "Высокий" },
+    t11: { id: "T5.2", nameRu: "Промпт-инъекции", nameEn: "Prompt Injections", nameZh: "提示注入", descRu: "Обход инструкций модели", descEn: "Bypassing model instructions", descZh: "绕过模型指令", table: "1.5", risk: "Низкий" },
+    t12: { id: "T6.1", nameRu: "Откат к уязвимой версии", nameEn: "Rollback to Vulnerable Version", nameZh: "回滚到有漏洞版本", descRu: "Возврат к старой версии с уязвимостями", descEn: "Reverting to old vulnerable version", descZh: "回滚到旧的有漏洞版本", table: "1.6", risk: "Критический" },
     t13: { id: "T6.2", nameRu: "Компрометация пайплайна", nameEn: "Pipeline Compromise", nameZh: "流水线入侵", descRu: "Внедрение вредоносного кода в обновление", descEn: "Malicious code injection into update", descZh: "向更新中注入恶意代码", table: "1.6", risk: "Критический" }
 };
 
@@ -209,12 +209,14 @@ function getRiskText(risk) {
         if (risk === 'Критический') return 'Critical';
         if (risk === 'Высокий') return 'High';
         if (risk === 'Средний') return 'Medium';
+        if (risk === 'Низкий') return 'Low';
         return risk;
     }
     if (currentLang === 'zh') {
         if (risk === 'Критический') return '严重';
         if (risk === 'Высокий') return '高危';
         if (risk === 'Средний') return '中危';
+        if (risk === 'Низкий') return '低危';
         return risk;
     }
     return risk;
@@ -1034,7 +1036,7 @@ function showAllThreats() {
         '1.2': ['T2.1', 'T2.2', 'T2.3', 'T2.4'],
         '1.3': ['T3.1', 'T3.2', 'T3.3'],
         '1.4': ['T4.1', 'T4.2', 'T4.3'],
-        '1.5': ['T5.1', 'T5.2', 'T5.3', 'T5.4', 'T5.5', 'T5.6'],
+        '1.5': ['T5.1', 'T5.2', 'T5.3', 'T5.4', 'T5.5', 'T5.6', 'T5.7', 'T5.8', 'T5.9', 'T5.10'],
         '1.6': ['T6.1', 'T6.2', 'T6.3']
     };
     
@@ -1081,4 +1083,4 @@ window.onload = function() {
             closeModal();
         }
     };
-};
+}
